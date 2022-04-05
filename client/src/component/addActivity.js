@@ -6,40 +6,41 @@ import { getActivity, addActivity } from "../redux/accion";
 
 export function CreateActivity() {
   const dispatch = useDispatch();
-  const activities = useSelector((state) => state);
+  const activities = useSelector((state) => state.activities);
 
-  const [text, setText] = useState({
+  const [input, setInput] = useState({
     name: "",
     difficulty: "",
-    duraction: "",
+    duration: "",
     season: "",
-    country: "",
+    country: [],
   });
 
   //!va manejando los cambios del input(los guarda)
   function handleChange(e) {
-    setText( ()=>{
-        return {
-      ...text,
-      [e.target.value]: e.target.value,
-    }});
-    console.log(text);
+    setInput(() => {
+      return {
+        ...input,
+        [e.target.name]: e.target.value,
+      };
+    });
+    console.log(input);
   }
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(addActivity(text));
+    dispatch(addActivity(input));
     alert("Activity successfully created!");
-    setText({
+    setInput({
       name: "",
       difficulty: "",
-      duraction: "",
+      duration: "",
       season: "",
       country: "",
     });
   }
   useEffect(() => {
-    dispatch(addActivity());
-  }, []);
+    dispatch(addActivity(input));
+  }, [dispatch]);
 
   return (
     <div>
@@ -48,54 +49,60 @@ export function CreateActivity() {
       </Link>
 
       <div>
-        <form>
+        <form onSubmit={(e) => handleSubmit(e)}>
           <div>
             <label>Name</label>
             <input
               type="text"
-              value={text.name}
-              onChange={handleChange}
+              value={input.name}
+              name="name"
+              onChange={(e) => handleChange(e)}
             ></input>
           </div>{" "}
           <div>
             <label>Difficulty</label>
             <input
               type="number"
-              value={text.difficulty}
-              onChange={handleChange}
+              value={input.difficulty}
+              name="difficulty"
+              onChange={(e) => handleChange(e)}
+            ></input>
+          </div>{" "}
+          <div>
+            <label>Duration</label>
+            <input
+              type="text"
+              value={input.ñ}
+              name="duration"
+              onChange={(e) => handleChange(e)}
             ></input>
           </div>{" "}
           <div>
             <label>Season</label>
             <input
               type="text"
-              value={text.season}
-              onChange={handleChange}
+              value={input.season}
+              name="season"
+              onChange={(e) => handleChange(e)}
             ></input>
           </div>{" "}
           <div>
             <label>Country</label>
             <input
               type="text"
-              value={text.country}
-              onChange={handleChange}
+              value={input.country}
+              name="country"
+              onChange={(e) => handleChange(e)}
             ></input>
-          </div>
+          </div>{" "}
+          <button type="submit">Crete Activity</button>
         </form>
       </div>
-
-      {/* <form>
-      <label>Imagen</label>
-      <input type="img" value={input.imagen} onChange={handleChange}/>
-    </form> */}
-      <button
-        type="submit"
-        onClick={(e) => {
-          handleSubmit(e);
-        }}
-      >
-        Crete Activity
-      </button>
     </div>
   );
 }
+
+/* <form>
+      <label>Imagen</label>
+      <input type="img" value={input.imagen} onChange={handleChange}/>
+    </form> */

@@ -11,7 +11,7 @@ export function HomeActivity() {
   const dispach = useDispatch();
   const allActivity = useSelector((state) => state.activity);
 
-  const [activityPorPage, setActivityPage] = useState("");
+  // const [activityPorPage, setActivityPage] = useState("");
 
   useEffect(() => {
     dispach(getActivity());
