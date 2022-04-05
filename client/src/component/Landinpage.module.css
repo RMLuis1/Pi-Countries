@@ -1,0 +1,141 @@
+.portada {
+
+    height: 700px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+}
+
+.fondodeportada {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -100;
+}
+
+.title{
+    color: wheat;
+    display: grid;
+    font-size:300%;
+    gap: 40px;
+    padding: 40px;
+    justify-content: left;
+}
+
+.FrasePresentacion {
+    font-size: 20px;
+    /* font-weight: bold; */
+    color: #FFF;
+text-align:left;
+margin-left: 5%;
+}
+
+.button{
+    height: auto;
+    width: 300px;
+    font-size: 18px;
+    background-color: transparent;
+    color: #FFF;
+    line-height: 26px;
+    border-radius: 28px;
+    border-color: #b00000;
+    cursor: pointer;
+    transition: width 0.2s;
+   float: left;
+   margin-left: 3%;
+}
+
+.button:hover {
+    width: 320px;
+    background-color: #b00000;
+}
+
+.contenedor{
+    
+    display: flex;
+    width: 600px;
+    height: 40px;
+    color:#FFF;
+    font-size: 40px;
+    line-height: 40px;
+
+    position: absolute;
+    top:0;
+    right: 100%;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+
+    overflow: hidden;
+
+}
+.lista{
+    list-style: none;
+    padding-left: 10px;
+    animation: cambiar 7s infinite;
+}
+
+.p, .lista{
+    margin: 0;
+}
+
+@keyframes cambiar {
+    0%{
+        margin-top: 0;
+    }
+    20%{
+        margin-top: 0;
+    }
+    25%{
+        margin-top: -40px;
+    }
+    50%{
+        margin-top: -40px;
+    }
+    55%{
+        margin-top: -80px;
+    }   
+    80%{
+        margin-top: -80;
+    }
+    85%{ margin-top: -40px;}
+    95%{
+        margin-top: -40px;
+    }
+    100%{margin-top: 0;}
+}
+
+
+
+
+
+
+@media (max-width: 560px) {
+    .portada,
+    .fondodeportada {
+        width: 90%;
+        height: auto;
+    }
+}
+
+/* .button {
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    /* transition-duration: 0.4s;
+    border-radius: 20%;
+    
+}
+
+.button:hover {
+    background-color: #4CAF50;
+    /* Green */
+    /* color: white; */
+/* } */ 
+/* .button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+} */ 
