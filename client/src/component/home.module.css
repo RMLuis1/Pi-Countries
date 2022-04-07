@@ -41,8 +41,8 @@ align-items: center;
     width: 80%;
     margin: 2rem auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 240px);
-    gap:4re;
+    grid-template-columns: repeat(auto-fill, 340px);
+    /* gap:4re; */
     justify-content: center;
     background-color: none;
 }

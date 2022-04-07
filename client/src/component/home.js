@@ -12,6 +12,7 @@ import styles from "./home.module.css";
 import CountryCard from "./countriesCard.js";
 import Paginado from "./paginadoCountries";
 import { Search } from "./search";
+import { Country } from "./countryDetall";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -116,15 +117,17 @@ export default function Home() {
         <div className={styles.countriescard}>
           {currentCountry?.map((e) => {
             return (
-              <ul>
-                <Link className={styles.link} to={"/home/" + e.id}>
-                  <CountryCard
-                    name={e.name}
-                    flags={e.flags}
-                    continents={e.continents}
-                  />
-                </Link>
-              </ul>
+              <div key={e.id}>
+                <ul>
+                  <Link className={styles.link} to={"/home/" + e.id}>
+                    <CountryCard
+                      name={e.name}
+                      flags={e.flags}
+                      continents={e.continents}
+                    />
+                  </Link>
+                </ul>
+              </div>
             );
           })}
         </div>

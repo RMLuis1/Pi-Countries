@@ -5,7 +5,7 @@ import Home from "./component/home";
 import "./App.css";
 import { CreateActivity } from "./component/addActivity";
 import { HomeActivity } from "./component/homeActivity";
-import CountryCard from "./component/countriesCard"
+import {Country} from "./component/countryDetall";
 
 function App() {
   return (
@@ -13,9 +13,9 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Landinpage />} />
         <Route path="/home" element={<Home />} />
-        <Route exact path="/home/:id" element={<CountryCard />} />
-        <Route path="/activity" element={< HomeActivity />} />
-        <Route exact path="/activity/create" element={<CreateActivity/>}/>
+        <Route  path="/home/:id" element={<Country />} />
+        <Route path="/activity" element={<HomeActivity />} />
+        <Route exact path="/activity/create" element={<CreateActivity />} />
       </Routes>
     </div>
   );

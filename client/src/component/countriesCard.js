@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./countryCard.module.css";
 
-export default function CountryCard({ flags, name, continents, id }) {
-   
+export default function CountryCard({ flags, name, continents }) {
   return (
     <div className={styles.countriesCard}>
       <li className={styles.li}>

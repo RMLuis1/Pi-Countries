@@ -1,0 +1,8 @@
+.danger {
+    color: red;
+    font-size: 13px;
+}
+
+.inputdanger {
+    border: 2px solid red;
+}

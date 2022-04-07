@@ -12,7 +12,7 @@ import {
 const initialState = {
   countries: [],
   countries2: [],
-  country: {},
+  country: [],
   activity: [],
 };
 
@@ -111,28 +111,3 @@ export default function Reducer(state = initialState, action) {
       return state;
   }
 }
-// export default function reducer(state = initialState, action) {
-//   switch (action) {
-//     case GET_ALL_COUNTRIESID:
-//       return {
-//         ...state,
-//         countries: action.payload,
-//       };
-
-//     default:
-//       return state;
-//   }
-// }
-
-// export default function reducer(state = initialState, action) {
-//   switch (action) {
-//     case GET_ALL_ACTIVITY:
-//       return {
-//         ...state,
-//         activity: action.payload,
-//       };
-
-//     default:
-//       return state;
-//   }
-// }

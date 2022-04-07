@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const axios = require("axios");
 const { Country, Activity, tablaInt } = require("../db");
-const { Op } = require("sequelize");
+const { Op, where } = require("sequelize");
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const router = Router();
@@ -37,7 +37,7 @@ const router = Router();
 
 const api = async () => {
   const arr = await axios.get("https://restcountries.com/v3/all");
-
+  // https://restcountries.com/v3.1/all
   return arr.data;
 };
 
@@ -68,7 +68,7 @@ router.get("/countries", async (req, res) => {
       const hay = await Country.findAll({ include: [Activity] });
       if (!hay.length) {
         await Country.bulkCreate(
-          apiCountries.map((e) => {
+          apiCountries?.map((e) => {
             return {
               id: e.cca3,
               name: e.name.common,
@@ -117,40 +117,12 @@ router.get("/countries/:id", async (req, res) => {
         res.status(404).send("no existe ...");
       }
 
-      // const activityDb = await Activity.findAll({
-      //   atributes: ["id", "name", "dificulty", "duraction", "season"],
-      //   through: {
-      //     atributes: [],
-      //   },
-      // });
-
-      // const CountryId = [countriesID, ...activityDb];
-
       res.status(200).json(countriesID);
     }
   } catch (error) {
     console.log(error);
   }
 });
-
-// router.post("/activity", async (req, res) => {
-//   const { name, difficulty, duration, season, country } = req.body;
-
-//   const newActivity = await Activity.create({
-//     name: name,
-//     difficulty: difficulty,
-//     duration: duration,
-//     season: season,
-//   });
-
-//   const actCountry = Country.findAll({
-//     where: {
-//       name: country,
-//     },
-//   });
-//   newActivity.addCountry(actCountry);
-//   res.status(200).send("Actividad creada!");
-// });
 
 router.post("/activity", async (req, res) => {
   const { name, difficulty, duration, season, country } = req.body;
@@ -177,7 +149,9 @@ router.post("/activity", async (req, res) => {
 });
 
 router.get("/activity", async (req, res) => {
-  const activity = await Activity.findAll();
+  const activity = await Activity.findAll({
+    include: [Country],
+  });
   res.send(activity);
 });
 
@@ -185,14 +159,21 @@ router.get("/activityByCountry", async (req, res) => {
   const activityByCountry = await tablaInt.findAll();
   res.send(activityByCountry);
 });
+// router.delete("/activity", (req, res) => {
+//   const { id } = req.params;
+//   const deleted = Activity.remove({
+//     _id: id,
+//   });
 
-// [ ] GET /countries?name="...":
-// •	Obtener los países que coincidan con el nombre pasado
-//como query parameter (No necesariamente tiene que ser una matcheo exacto)
-// •	Si no existe ningún país mostrar un mensaje adecuado
-// [ ] POST /activity:
-// •	Recibe los datos recolectados desde el formulario
-// controlado de la ruta de creación de actividad turística por body
-// •	Crea una actividad turística en la base de datos
+//   if (!deleted) {
+//     return res.status(404).send({ error: "Mensaje de error" });
+//   }
+
+// if (!deleted.length) {
+//   res.status(404).send({ error: "No existe la actividad indicado" });
+// }
+//   const activity = Activity.findByPk(id);
+//   res.status(200).json("Actividad borrada wey");
+// });
 
 module.exports = router;

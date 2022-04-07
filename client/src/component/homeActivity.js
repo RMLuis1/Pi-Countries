@@ -11,8 +11,6 @@ export function HomeActivity() {
   const dispach = useDispatch();
   const allActivity = useSelector((state) => state.activity);
 
-  // const [activityPorPage, setActivityPage] = useState("");
-
   useEffect(() => {
     dispach(getActivity());
   }, [dispach]);
@@ -28,15 +26,20 @@ export function HomeActivity() {
       <div>
         {allActivity?.map((e) => {
           return (
-            <ul>
-              <ActivityCard
-                name={e.name}
-                difficulty={e.difficulty}
-                duration={e.duration}
-                season={e.season}
-                country= {e.country}
-              />
-            </ul>
+            <div key={e.id}>
+              <ul>
+                <ActivityCard
+                  name={e.name}
+                  difficulty={e.difficulty}
+                  duration={e.duration}
+                  season={e.season}
+                  id={e.id}
+                  countries={e.countries.map((e) => {
+                    return e.id;
+                  })}
+                />
+              </ul>
+            </div>
           );
         })}
       </div>

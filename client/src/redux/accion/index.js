@@ -59,6 +59,7 @@ export function addActivity(activity) {
   };
 }
 
+
 export function filterCountryByAfabeticamente(payload) {
   return {
     type: "FILTER_ALFABETICAMENTE",
