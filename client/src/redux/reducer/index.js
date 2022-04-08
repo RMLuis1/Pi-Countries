@@ -45,34 +45,56 @@ export default function Reducer(state = initialState, action) {
       };
 
     case FILTER_ALFABETICAMENTE:
-      let soredArr =
-        action.payload === "ascendente"
-          ? state.countries.sort((a, b) => a.name.localeCompare(b.name))
-          : state.countries.sort((a, b) => b.name.localeCompare(a.name));
-      // action.payload === "ascendente"?
-      //    state.countries.sort(function (a, b) {
-      //       if (a.name > b.name) {
-      //         return 1;
-      //       }
-      //       if (b.name > a.name) {
-      //         return -1;
-      //       }
+      // let soredArr =
+      //   action.payload === "ascendente"?
+      //      state.countries.sort((a, b) => a.name.localeCompare(b.name))
+      //     : state.countries.sort((a, b) => b.name.localeCompare(a.name));
 
-      //       return 0;
-      //     })
-      //   : state.countries.sort(function (a, b) {
-      //       if (a.name > b.name) {
-      //         return -1;
-      //       }
-      //       if (b.name > a.name) {
-      //         return 1;
-      //       }
-      //       return 0;
-      //     });
-      return {
-        ...state,
-        countries: soredArr,
-      };
+      if (action.payload === "ascendente") {
+        return {
+          ...state,
+          countries: state.countries.sort((a, b) =>
+            a.name.localeCompare(b.name)
+          ),
+        };
+      } else if (action.payload === "descendente") {
+        return {
+          ...state,
+          countries: state.countries.sort((a, b) =>
+            b.name.localeCompare(a.name)
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          countries: state.countries,
+        };
+      }
+
+    // action.payload === "ascendente"?
+    //    state.countries.sort(function (a, b) {
+    //       if (a.name > b.name) {
+    //         return 1;
+    //       }
+    //       if (b.name > a.name) {
+    //         return -1;
+    //       }
+
+    //       return 0;
+    //     })
+    //   : state.countries.sort(function (a, b) {
+    //       if (a.name > b.name) {
+    //         return -1;
+    //       }
+    //       if (b.name > a.name) {
+    //         return 1;
+    //       }
+    //       return 0;
+    //     });
+    // return {
+    //   ...state,
+    //   countries: soredArr,
+    // };
     case FILTER_CONTINENTS:
       const allCountry = state.countries2;
       const continentsFilter =
@@ -84,9 +106,11 @@ export default function Reducer(state = initialState, action) {
         countries: continentsFilter,
       };
     case FILTER_POPULATION:
-      let sortPopulation =
-        action.payload === "ascendente"
-          ? state.countries.sort(function (a, b) {
+
+     if(action.payload === "ascendente"){
+     return  { 
+       ...state,
+       countries: state.countries.sort(function (a, b) {
               if (a.population > b.population) {
                 return 1;
               }
@@ -95,22 +119,51 @@ export default function Reducer(state = initialState, action) {
               }
 
               return 0;
-            })
-          : state.countries.sort(function (a, b) {
-              if (a.population > b.population) {
-                return -1;
-              }
-              if (b.population > a.population) {
-                return 1;
-              }
-              return 0;
-            });
-      return {
-        ...state,
-        countries: sortPopulation,
-      };
+     })}
+     }  else if (action.payload === "descendente") {
+       const descendent = state.countries.sort(function (a, b) {
+         if (a.population > b.population) {
+           return -1;
+         }
+         if (b.population > a.population) {
+           return 1;
+         }
+         return 0;
+       });
+       return {
+         ...state,
+         countries: descendent,
+       };
+       } else {
+       return { ...state, countries: state.countries };
+     }
+      // let sortPopulation =
+      //   action.payload === "ascendente"
+      //     ? state.countries.sort(function (a, b) {
+      //         if (a.population > b.population) {
+      //           return 1;
+      //         }
+      //         if (b.population > a.population) {
+      //           return -1;
+      //         }
+
+      //         return 0;
+      //       })
+      //     : state.countries.sort(function (a, b) {
+      //         if (a.population > b.population) {
+      //           return -1;
+      //         }
+      //         if (b.population > a.population) {
+      //           return 1;
+      //         }
+      //         return 0;
+      //       });
+      // return {
+      //   ...state,
+      //   countries: sortPopulation,
+      // };
 
     default:
       return state;
-  }
+    }
 }

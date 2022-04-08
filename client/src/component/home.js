@@ -94,12 +94,12 @@ export default function Home() {
       <div>
         <div className={styles.navbar}>
           <select onChange={(e) => handleSort(e)}>
-            <option value="Default">Orden ALfabetico</option>
+            <option value="">Orden ALfabetico</option>
             <option value="ascendente">A-Z</option>
             <option value="descendente">Z-A</option>
           </select>
           <select onChange={(e) => handlefilterContinents(e)}>
-            <option value="Default">Continents</option>
+            <option value="All">Continents</option>
             <option value="North America"> North America</option>
             <option value="South America"> South America</option>
             <option value="Asia">Asia</option>
@@ -110,7 +110,7 @@ export default function Home() {
           </select>
           <select onChange={(e) => handleActivity(e)}>
             {allActivity?.map((e) => {
-              return <option value={e.name}>{e.name}</option>;
+              return <option key={e.id} value={e.name}>{e.name}</option>;
             })}
             <option value="Default">Activity</option>,
           </select>

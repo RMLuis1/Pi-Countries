@@ -26,8 +26,8 @@ export function HomeActivity() {
       <div>
         {allActivity?.map((e) => {
           return (
-            <div key={e.id}>
-              <ul>
+            <ul key={e.id}>
+            
                 <ActivityCard
                   name={e.name}
                   difficulty={e.difficulty}
@@ -35,11 +35,21 @@ export function HomeActivity() {
                   season={e.season}
                   id={e.id}
                   countries={e.countries.map((e) => {
-                    return e.id;
+                    return (
+                     <ul key={e.name}>
+                      {e.id}<br />
+                        <img
+                          width={50}
+                          height={25}
+                          src={e.flags}
+                          alt="flag not found"
+                        />
+                    </ul>
+                    );
                   })}
                 />
-              </ul>
-            </div>
+              
+             </ul> 
           );
         })}
       </div>
