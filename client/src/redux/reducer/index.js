@@ -47,25 +47,28 @@ export default function Reducer(state = initialState, action) {
     case FILTER_ALFABETICAMENTE:
       let soredArr =
         action.payload === "ascendente"
-          ? state.countries.sort(function (a, b) {
-              if (a.name > b.name) {
-                return 1;
-              }
-              if (b.name > a.name) {
-                return -1;
-              }
+          ? state.countries.sort((a, b) => a.name.localeCompare(b.name))
+          : state.countries.sort((a, b) => b.name.localeCompare(a.name));
+      // action.payload === "ascendente"?
+      //    state.countries.sort(function (a, b) {
+      //       if (a.name > b.name) {
+      //         return 1;
+      //       }
+      //       if (b.name > a.name) {
+      //         return -1;
+      //       }
 
-              return 0;
-            })
-          : state.countries.sort(function (a, b) {
-              if (a.name > b.name) {
-                return -1;
-              }
-              if (b.name > a.name) {
-                return 1;
-              }
-              return 0;
-            });
+      //       return 0;
+      //     })
+      //   : state.countries.sort(function (a, b) {
+      //       if (a.name > b.name) {
+      //         return -1;
+      //       }
+      //       if (b.name > a.name) {
+      //         return 1;
+      //       }
+      //       return 0;
+      //     });
       return {
         ...state,
         countries: soredArr,

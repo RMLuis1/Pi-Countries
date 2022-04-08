@@ -4,7 +4,6 @@ import { Link, useParams } from "react-router-dom";
 import { getCountriesID } from "../redux/accion";
 
 export function Country() {
-  
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -23,19 +22,41 @@ export function Country() {
         {countryDetall ? (
           <div>
             <h1>{countryDetall.name}</h1>
-            <p>{countryDetall.id}</p>
-            <p>{countryDetall.continents}</p>
-            <p>{countryDetall.capital}</p>
-            <p>{countryDetall.subregion}</p>
-            <p>{countryDetall.area}</p>
-            <p>{countryDetall.population}</p>
             <img
               width={150}
               height={100}
-              
               src={countryDetall.flags}
               alt="flag not found"
             />
+            <p>
+              <strong>Id: </strong>
+              {countryDetall.id}
+            </p>
+            <p>
+              <strong>Continents: </strong>
+              {countryDetall.continents}
+            </p>
+            <p>
+              <strong>Capital: </strong>
+              {countryDetall.capital}
+            </p>
+            <p>
+              <strong>Subregion: </strong>
+              {countryDetall.subregion}
+            </p>
+            <p>
+              <strong>Area: </strong>
+              {countryDetall.area}
+            </p>
+            <p>
+              <strong>Population: </strong>
+              {countryDetall.population}
+            </p>
+            <p>
+              {countryDetall.activities?.map((e) => {
+                return <p> {e.name} </p>;
+              })}
+            </p>
           </div>
         ) : (
           "No found"

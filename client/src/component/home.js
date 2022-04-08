@@ -6,13 +6,13 @@ import {
   filterCountryByContinents,
   filterCountryByAfabeticamente,
   filterCountryByPopulation,
+  getActivity,
 } from "../redux/accion/index";
 import { Link, NavLink } from "react-router-dom";
 import styles from "./home.module.css";
 import CountryCard from "./countriesCard.js";
 import Paginado from "./paginadoCountries";
 import { Search } from "./search";
-import { Country } from "./countryDetall";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -23,6 +23,7 @@ export default function Home() {
   //se conecta el estado
   //sirve para traer el estado de paises...y lo guarda en la constante
   //que por el momento esta vacio
+  const allActivity = useSelector((state) => state.activity);
 
   const [countryPage, setCountryPage] = useState(1);
   const [countryPorPage, setCountryPorPage] = useState(10);
@@ -44,6 +45,10 @@ export default function Home() {
     //ejecuta la funcion getCountry
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(getActivity());
+  }, [dispatch]);
+
   function handleClick(e) {
     e.preventDefault();
     dispatch(getCountry());
@@ -58,6 +63,10 @@ export default function Home() {
 
   function handlefilterContinents(e) {
     dispatch(filterCountryByContinents(e.target.value));
+  }
+
+  function handleActivity(e) {
+    dispatch(getActivity(e.target.value));
   }
 
   function handleSortPopulation(e) {
@@ -84,13 +93,13 @@ export default function Home() {
       <Search />
       <div>
         <div className={styles.navbar}>
-          <select onClick={(e) => handleSort(e)}>
-            <option value="">Orden ALfabetico</option>
+          <select onChange={(e) => handleSort(e)}>
+            <option value="Default">Orden ALfabetico</option>
             <option value="ascendente">A-Z</option>
             <option value="descendente">Z-A</option>
           </select>
-          <select onClick={(e) => handlefilterContinents(e)}>
-            <option value="All">Continents</option>
+          <select onChange={(e) => handlefilterContinents(e)}>
+            <option value="Default">Continents</option>
             <option value="North America"> North America</option>
             <option value="South America"> South America</option>
             <option value="Asia">Asia</option>
@@ -99,11 +108,14 @@ export default function Home() {
             <option value="Europe">Europe</option>
             <option value="Oceania">Oceania</option>
           </select>
-          <select>
-            <option value="Activity">Activity</option>
+          <select onChange={(e) => handleActivity(e)}>
+            {allActivity?.map((e) => {
+              return <option value={e.name}>{e.name}</option>;
+            })}
+            <option value="Default">Activity</option>,
           </select>
           <select onClick={(e) => handleSortPopulation(e)}>
-            <option value="population">Population</option>
+            <option value="Default">Population</option>
             <option value="ascendente">Ascendente</option>
             <option value="descendente">Descendente</option>
           </select>
