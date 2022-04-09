@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { ActivityCard } from "./activitysCard";
 import { getActivity } from "../redux/accion";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./homeActivity.module.css";
 
 export function HomeActivity() {
@@ -20,7 +20,7 @@ export function HomeActivity() {
       <NavLink className={styles.link} to="/activity/create">
         <button className={styles.buttonCreate}>Create Activity</button>
       </NavLink>
-
+      <NavLink to="/home" ><button>Volver</button> </NavLink>
       <h1>Activity</h1>
 
       <div>
@@ -28,8 +28,10 @@ export function HomeActivity() {
           return (
             <ul key={e.id}>
             
+               
                 <ActivityCard
-                  name={e.name}
+                
+                name= {<NavLink to={"/activity/"+ e.id} >{e.name}</NavLink>}
                   difficulty={e.difficulty}
                   duration={e.duration}
                   season={e.season}

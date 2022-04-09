@@ -7,6 +7,7 @@ import {
   GET_ALL_COUNTRIESNAME,
   FILTER_POPULATION,
   ADD_ACTIVITY,
+  FILTER_ACTIVITY,
 } from "../accion";
 
 const initialState = {
@@ -43,6 +44,20 @@ export default function Reducer(state = initialState, action) {
       return {
         ...state,
       };
+   case FILTER_ACTIVITY:
+      const filterActivities= state.countries2
+      const activit= action.payload === "All"?
+        filterActivities.filter((e)=> e.activities.length > 0) :
+         filterActivities.filter((e)=>{
+
+           return  e.activities.map((e)=>
+           e.name? e.name:e).includes(action.payload)
+           
+          })  
+          return{
+              ...state,
+                countries: activit
+            }
 
     case FILTER_ALFABETICAMENTE:
       // let soredArr =

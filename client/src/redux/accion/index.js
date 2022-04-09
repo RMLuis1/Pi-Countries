@@ -8,6 +8,7 @@ export const FILTER_ALFABETICAMENTE = "FILTER_ALFABETICAMENTE";
 export const FILTER_CONTINENTS = "FILTER_CONTINENTS";
 export const GET_ALL_COUNTRIESNAME = "GET_ALL_COUNTRIESNAME";
 export const FILTER_POPULATION = "FILTER_POPULATION";
+export const FILTER_ACTIVITY = "FILTER_ACTIVITY";
 
 export const getCountry = () => {
   return (dispatch) => {
@@ -77,6 +78,12 @@ export function filterCountryByPopulation(payload) {
     type: "FILTER_POPULATION",
     payload,
   };
+}
+export function filterActivity(payload){
+  return{
+    type:"FILTER_ACTIVITY",
+    payload
+  }
 }
 export function getSearch(name) {
   return async function (dispatch) {

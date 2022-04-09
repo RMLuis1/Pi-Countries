@@ -52,12 +52,14 @@ export function Country() {
               <strong>Population: </strong>
               {countryDetall.population}
             </p>
-            <div><strong>Activity: </strong><br />
-            <select multiple>
-              {countryDetall.activities?.map((e) => {
-                return <option key={e.name}> {e.name} </option>;
-              })}
-            </select>
+            <div>
+              <strong>Activity: </strong>
+              <br />
+              <select multiple>
+                {countryDetall.activities?.map((e) => {
+                  return <option  key={e.name}>{e.name} </option>;
+                })}
+              </select>
             </div>
           </div>
         ) : (

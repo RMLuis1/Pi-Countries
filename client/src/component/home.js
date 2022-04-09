@@ -7,6 +7,7 @@ import {
   filterCountryByAfabeticamente,
   filterCountryByPopulation,
   getActivity,
+  filterActivity,
 } from "../redux/accion/index";
 import { Link, NavLink } from "react-router-dom";
 import styles from "./home.module.css";
@@ -66,7 +67,8 @@ export default function Home() {
   }
 
   function handleActivity(e) {
-    dispatch(getActivity(e.target.value));
+    e.preventDefault()
+    dispatch(filterActivity(e.target.value));
   }
 
   function handleSortPopulation(e) {
@@ -108,11 +110,12 @@ export default function Home() {
             <option value="Europe">Europe</option>
             <option value="Oceania">Oceania</option>
           </select>
-          <select onChange={(e) => handleActivity(e)}>
-            {allActivity?.map((e) => {
-              return <option key={e.id} value={e.name}>{e.name}</option>;
-            })}
-            <option value="Default">Activity</option>,
+          <select onClick={(e) => handleActivity(e)}>
+            <option disabled>Filter by Activity</option>,
+            <option value="All">All Activity</option>,
+            {allActivity?.map((e) => (
+              <option key={e.id} value={e.name}>{e.name}</option>
+            ))}
           </select>
           <select onClick={(e) => handleSortPopulation(e)}>
             <option value="Default">Population</option>
@@ -131,13 +134,13 @@ export default function Home() {
             return (
               <div key={e.id}>
                 <ul>
-                  <Link className={styles.link} to={"/home/" + e.id}>
+                  
                     <CountryCard
-                      name={e.name}
+                      name={<Link className={styles.link} to={"/home/" + e.id} >{e.name}</Link>}
                       flags={e.flags}
                       continents={e.continents}
                     />
-                  </Link>
+                  
                 </ul>
               </div>
             );
