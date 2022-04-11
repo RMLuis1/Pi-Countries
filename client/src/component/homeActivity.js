@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { ActivityCard } from "./activitysCard";
 import { getActivity } from "../redux/accion";
 import { Link, NavLink } from "react-router-dom";
 import styles from "./homeActivity.module.css";
@@ -20,38 +19,29 @@ export function HomeActivity() {
       <NavLink className={styles.link} to="/activity/create">
         <button className={styles.buttonCreate}>Create Activity</button>
       </NavLink>
-      <NavLink to="/home" ><button>Volver</button> </NavLink>
+      <NavLink to="/home">
+        <button>Volver</button>{" "}
+      </NavLink>
       <h1>Activity</h1>
 
       <div>
         {allActivity?.map((e) => {
           return (
             <ul key={e.id}>
-            
-               
-                <ActivityCard
-                
-                name= {<NavLink to={"/activity/"+ e.id} >{e.name}</NavLink>}
-                  difficulty={e.difficulty}
-                  duration={e.duration}
-                  season={e.season}
-                  id={e.id}
-                  countries={e.countries.map((e) => {
-                    return (
-                     <ul key={e.name}>
-                      {e.id}<br />
-                        <img
-                          width={50}
-                          height={25}
-                          src={e.flags}
-                          alt="flag not found"
-                        />
-                    </ul>
-                    );
-                  })}
-                />
-              
-             </ul> 
+              <div>
+                <h2>{e.name}</h2>
+                <h4>
+                  <strong>Difficulty: </strong> {e.difficulty}
+                </h4>
+                <h4>
+                  <strong>Paises: </strong>
+                  {e.countries.length}{" "}
+                </h4>
+                <Link to={"/activity/" + e.id}>
+                  <button>Detall</button>
+                </Link>
+              </div>
+            </ul>
           );
         })}
       </div>

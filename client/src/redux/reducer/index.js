@@ -8,6 +8,7 @@ import {
   FILTER_POPULATION,
   ADD_ACTIVITY,
   FILTER_ACTIVITY,
+  ADD_COUTRYBYACTIVITY,
 } from "../accion";
 
 const initialState = {
@@ -44,6 +45,11 @@ export default function Reducer(state = initialState, action) {
       return {
         ...state,
       };
+       case ADD_COUTRYBYACTIVITY:
+         return{
+           ...state,
+           activity: action.payload
+         }
    case FILTER_ACTIVITY:
       const filterActivities= state.countries2
       const activit= action.payload === "All"?

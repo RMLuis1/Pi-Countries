@@ -9,6 +9,8 @@ export const FILTER_CONTINENTS = "FILTER_CONTINENTS";
 export const GET_ALL_COUNTRIESNAME = "GET_ALL_COUNTRIESNAME";
 export const FILTER_POPULATION = "FILTER_POPULATION";
 export const FILTER_ACTIVITY = "FILTER_ACTIVITY";
+export const ADD_COUTRYBYACTIVITY = "ADD_COUTRYBYACTIVITY";
+
 
 export const getCountry = () => {
   return (dispatch) => {
@@ -85,6 +87,15 @@ export function filterActivity(payload){
     payload
   }
 }
+
+export function AddCountryByActivity(payload){
+  return {
+    type: "ADD_COUTRYBYACTIVITY",
+    payload
+  };
+}
+
+
 export function getSearch(name) {
   return async function (dispatch) {
     return await axios
