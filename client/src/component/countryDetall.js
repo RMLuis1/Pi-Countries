@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getCountriesID } from "../redux/accion";
+import { ActivityCard } from "./activitysCard";
 
 export function Country() {
   const dispatch = useDispatch();
@@ -55,11 +56,23 @@ export function Country() {
             <div>
               <strong>Activity: </strong>
               <br />
-              <select multiple>
                 {countryDetall.activities?.map((e) => {
-                  return <option  key={e.name}>{e.name} </option>;
+              
+                  return (
+                    <ActivityCard
+                      name={<p>{e.name}</p>}
+                      difficulty=  {e.difficulty}
+                       
+                      
+                      duration={e.duration}
+                        
+                      
+                      season= {e.season}
+                       
+                      id= {e.id}
+                    />
+                  );
                 })}
-              </select>
             </div>
           </div>
         ) : (

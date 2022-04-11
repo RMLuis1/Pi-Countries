@@ -67,7 +67,7 @@ export default function Home() {
   }
 
   function handleActivity(e) {
-    e.preventDefault()
+    e.preventDefault();
     dispatch(filterActivity(e.target.value));
   }
 
@@ -78,10 +78,19 @@ export default function Home() {
     serOrden(`Ordenado ${e.target.value}`);
   }
 
+  const norepeat = allActivity
+    .map((e) => e.name)
+    .reduce((acc, activityNoRepeat) => {
+      if (!acc.includes(activityNoRepeat)) {
+        acc.push(activityNoRepeat);
+      }
+      return acc;
+    }, []);
+
   return (
     <div>
       <NavLink to="/activity">
-        <button className={styles.buttonHome}>Activity</button>
+        <button className={styles.buttonHome}>Create Activity</button>
       </NavLink>{" "}
       <br />
       <h1 className={styles.title}>Countries</h1>
@@ -113,8 +122,10 @@ export default function Home() {
           <select onClick={(e) => handleActivity(e)}>
             <option disabled>Filter by Activity</option>,
             <option value="All">All Activity</option>,
-            {allActivity?.map((e) => (
-              <option key={e.id} value={e.name}>{e.name}</option>
+            {norepeat.map((e) => (
+              <option key={e} value={e}>
+                {e}
+              </option>
             ))}
           </select>
           <select onClick={(e) => handleSortPopulation(e)}>
@@ -134,13 +145,15 @@ export default function Home() {
             return (
               <div key={e.id}>
                 <ul>
-                  
-                    <CountryCard
-                      name={<Link className={styles.link} to={"/home/" + e.id} >{e.name}</Link>}
-                      flags={e.flags}
-                      continents={e.continents}
-                    />
-                  
+                  <CountryCard
+                    name={
+                      <Link className={styles.link} to={"/home/" + e.id}>
+                        {e.name}
+                      </Link>
+                    }
+                    flags={e.flags}
+                    continents={e.continents}
+                  />
                 </ul>
               </div>
             );
