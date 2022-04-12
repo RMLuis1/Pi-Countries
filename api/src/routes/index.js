@@ -155,6 +155,8 @@ router.get("/activity", async (req, res) => {
   res.send(activity);
 });
 
+
+
 router.get("/activityByCountry", async (req, res) => {
   const activityByCountry = await tablaInt.findAll();
   res.send(activityByCountry);
@@ -172,21 +174,20 @@ router.get("/activityByCountry", async (req, res) => {
 
 //   })
 
+// const activId = req.params.id;
+// const { country } = req.body;
+// // let activities = await Activity.findAll({
+// //           where: { name: country }
+// //       });
 
-  // const activId = req.params.id;
-  // const { country } = req.body;
-  // // let activities = await Activity.findAll({
-  // //           where: { name: country }
-  // //       });
-
-  // //       newCountry.addType(activities);
-  // //       res.status(200).send("Country added")
-  // Activity.findByIdAndUpdate(activId, country, (err, activityUpdate) => {
-  //   if (err) {
-  //     res.statusMessage(400).send("No se Actualizo");
-  //   }
-  //   res.status(200).send("actividad actualizada");
-  // });
+// //       newCountry.addType(activities);
+// //       res.status(200).send("Country added")
+// Activity.findByIdAndUpdate(activId, country, (err, activityUpdate) => {
+//   if (err) {
+//     res.statusMessage(400).send("No se Actualizo");
+//   }
+//   res.status(200).send("actividad actualizada");
+// });
 // });
 
 // router.delete("/activity", (req, res) => {

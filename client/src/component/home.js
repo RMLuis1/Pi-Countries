@@ -50,10 +50,10 @@ export default function Home() {
     dispatch(getActivity());
   }, [dispatch]);
 
-  function handleClick(e) {
-    e.preventDefault();
-    dispatch(getCountry());
-  }
+  // function handleClick(e) {
+  //   e.preventDefault();
+  //   dispatch(getCountry());
+  // }
 
   function handleSort(e) {
     e.preventDefault();
@@ -68,7 +68,11 @@ export default function Home() {
 
   function handleActivity(e) {
     e.preventDefault();
-    dispatch(filterActivity(e.target.value));
+    if (e.target.value === "Filter by Activity") {
+      dispatch(getCountry());
+    } else {
+      dispatch(filterActivity(e.target.value));
+    }
   }
 
   function handleSortPopulation(e) {
@@ -90,17 +94,11 @@ export default function Home() {
   return (
     <div>
       <NavLink to="/activity">
-        <button className={styles.buttonHome}>Create Activity</button>
+        <button className={styles.buttonHome}>Activity</button>
       </NavLink>{" "}
       <br />
-      <h1 className={styles.title}>Countries</h1>
-      <button
-        onClick={(e) => {
-          handleClick(e);
-        }}
-      >
-        Countries???
-      </button>
+      <NavLink to="/home"><h1 className={styles.title}>Countries</h1></NavLink>      
+     
       <Search />
       <div>
         <div className={styles.navbar}>
@@ -119,7 +117,7 @@ export default function Home() {
             <option value="Europe">Europe</option>
             <option value="Oceania">Oceania</option>
           </select>
-          <select onClick={(e) => handleActivity(e)}>
+          <select onChange={(e) => handleActivity(e)}>
             <option disabled>Filter by Activity</option>,
             <option value="All">All Activity</option>,
             {norepeat.map((e) => (

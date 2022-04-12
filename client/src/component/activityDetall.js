@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import { AddCountryByActivity, getActivity, getCountry } from "../redux/accion";
 import { ActivityCard } from "./activitysCard";
 
@@ -70,7 +70,7 @@ export function ActivityDetall() {
                   countries={e.countries.map((e) => {
                     return (
                       <ul key={e.name}>
-                        {e.id}
+                       <Link to={"/home/" + e.id } >{e.id}</Link> 
                         <br />
                         <img
                           width={50}
