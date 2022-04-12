@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getCountriesID } from "../redux/accion";
+import styles from "./countryDetall.module.css"
+
 
 export function Country() {
   const dispatch = useDispatch();
@@ -58,7 +60,7 @@ export function Country() {
               <br />
               {countryDetall.activities?.map((e) => {
                 return (
-                  <Link to={"/activity/" + e.id} key={e.id}>
+                  <Link className={styles.link} to={"/activity/" + e.id} key={e.id}>
                     <p>{e.name}</p>
                   </Link>
                 );

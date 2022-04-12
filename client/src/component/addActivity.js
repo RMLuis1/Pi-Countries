@@ -42,14 +42,7 @@ export function CreateActivity() {
       country: [...input.country, e.target.value],
     });
   }
-  //!  DELETE
-  function handleDelet(e) {
-    setInput({
-      ...input,
-      activity: activities.filter((act) => act !== e),
-    });
-  }
-  //!va manejando los cambios del input(los guarda)
+    //!va manejando los cambios del input(los guarda)
   function handleChange(e) {
     setInput(() => {
       const newInput = {
@@ -62,14 +55,7 @@ export function CreateActivity() {
     });
     console.log(input);
   }
-  //TODO: ESPERO QE FUNCIONE !!!!
-
-  //  function agregar(e){
-  //    setInput({
-  //      ...input,
-  //      country: [].push(e.target.value )
-  //     } )
-  //  }
+  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -81,9 +67,14 @@ export function CreateActivity() {
       alert("Activity successfully created!");
       setInput({
         ...input,
-        [e.target.name]: "",
+        name: "",
+        season: "",
+        difficulty: "",
+        duration: "",
+        country:[],
       });
     }
+
   }
   useEffect(() => {
     dispatch(getCountry());
@@ -132,17 +123,20 @@ export function CreateActivity() {
   ];
 
   return (
-    <div>
+    <div className={styles.divM}>
       <Link to="/home">
-        <button>volver</button>
+        <button className={styles.volver}>volver</button>
       </Link>
-
-      <div>
+      <br />
+      <h1 className={styles.h1t}>Create Activity</h1>
+      <div className={styles.div2}>
         <form onSubmit={handleSubmit}>
           <div>
             <label>Name </label>
             <input
-              className={inputError.name && styles.inputdanger}
+              className={
+                (inputError.name && styles.inputdanger) || styles.input
+              }
               type="text"
               value={input.name}
               name="name"
@@ -157,7 +151,9 @@ export function CreateActivity() {
           <div>
             <label>Difficulty</label>
             <input
-              className={inputError.difficulty && styles.inputdanger}
+              className={
+                (inputError.difficulty && styles.inputdanger) || styles.input
+              }
               type="number"
               value={input.difficulty}
               name="difficulty"
@@ -171,7 +167,10 @@ export function CreateActivity() {
           </div>{" "}
           <div>
             <label>Duration</label>
-            <select onClick={(e) => handleSelectDuration(e)}>
+            <select
+              className={styles.input}
+              onClick={(e) => handleSelectDuration(e)}
+            >
               {duracion.map((e) => {
                 return (
                   <option
@@ -188,7 +187,10 @@ export function CreateActivity() {
           </div>{" "}
           <div>
             <label>Season</label>
-            <select onClick={(e) => handleSelectSeason(e)}>
+            <select
+              className={styles.input}
+              onClick={(e) => handleSelectSeason(e)}
+            >
               {estaciones.map((e) => {
                 return (
                   <option
@@ -205,7 +207,7 @@ export function CreateActivity() {
           <div>
             <label>Country</label>
 
-            <select onChange={(e) => handleCountry(e)}>
+            <select className={styles.input} onChange={(e) => handleCountry(e)}>
               {allCountry?.map((e) => {
                 return (
                   <option
@@ -221,18 +223,16 @@ export function CreateActivity() {
               })}
             </select>
             <ul>
-              <li>{input.country.map((e) => e + " ,")} </li>{" "}
+              <li className={styles.input}>
+                {input.country.map((e) => e + " ,")}{" "}
+              </li>{" "}
             </ul>
           </div>
-          <button type="submit">Crete Activity</button>
+          <button className={styles.submit} type="submit">
+            Crete Activity
+          </button>
         </form>
       </div>
-      {/* {activities.map((e) => (
-        <div>
-          <p>{e}</p>
-          <button onClick={() => handleDelet(e)}>X</button>
-        </div> */}
-      {/* ))} */}
     </div>
   );
 }

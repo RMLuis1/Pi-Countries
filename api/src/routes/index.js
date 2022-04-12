@@ -14,26 +14,7 @@ const router = Router();
 //todo: base de datos y luego ya utilizarlos desde allí
 //! (Debe almacenar solo los datos necesarios para la ruta principal)
 //todo: •	Obtener un listado de los paises.
-//  async function API() {
-//    const res = await fetch("https://restcountries.com/v3/all");
-//    await res.json();
-//    const db = res.map((e) => {
-//      const db_api = {
-//        name: e.name,
-//        flag: e.flag,
-//        Continent: e.Continent,
-//        Capital: e.Capital,
-//        Subregion: e.Subregion,
-//        Area: e.Area,
-//        Population: e.Population,
-//      };
-//      Country.findOrCreate({
-//        where: {
-//          id: e.cca3,
-//        },
-//        default: db_api,
-//      });
-//      console.log("Es la DB: " + db_api);
+
 
 const api = async () => {
   const arr = await axios.get("https://restcountries.com/v3/all");
@@ -65,8 +46,8 @@ router.get("/countries", async (req, res) => {
     res.status(404).send("debes ingresar el nombre de un Pais");
   } else {
     try {
-      const hay = await Country.findAll({ include: [Activity] });
-      if (!hay.length) {
+      const db = await Country.findAll({ include: [Activity] });
+      if (!db.length) {
         await Country.bulkCreate(
           apiCountries?.map((e) => {
             return {
@@ -87,10 +68,12 @@ router.get("/countries", async (req, res) => {
         } else {
           res.status(404).send("No existen paises");
         }
-      } else {
-        res.status(200).send(hay);
+      } 
+      
+      else {
+        res.status(200).send(db);
       }
-    } catch (error) {
+    } catch (error) { 
       console.log("ERROR EN GET", error);
     }
   }

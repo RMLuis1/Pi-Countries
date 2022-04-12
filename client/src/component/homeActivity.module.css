@@ -1,6 +1,7 @@
 .activityscard {
     list-style: none;
-    width: 80%;
+    width: 800px;
+    height: 200px;
     margin: 2rem auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, 240px);
@@ -8,10 +9,41 @@
     justify-content: center;
     background-color: none;
 }
+
+    .activitis {
+        text-align: center;
+        border: 3px solid rgb(28, 129, 124);
+        background-color: transparent;
+        border-radius: 10%;
+        width: 150px;
+        height: 200px;
+
+    }
+
 .link {
     text-decoration: none
   
 }
+.title{
+    justify-content: center;
+    text-align: center;
+        text-shadow: 7px 4px 5px rgb(212, 212, 212);
+
+}
+.h1A{
+    color: rgb(54, 54, 61);
+    text-decoration:underline;
+    text-size-adjust:initial ;
+    font-variant: small-caps;
+    text-shadow: 7px 4px 5px rgb(209, 198, 198);
+    letter-spacing: 4px;
+}
+.h41{
+    color:#576c70;
+    font-size: 15px;
+}
+
+
 .buttonCreate{
     height: auto;
     width: 300px;
@@ -31,4 +63,41 @@
 .buttonCreate:hover {
     width: 320px;
     background-color: #3cb9cf;
+}
+.buttonVolver {
+    height: auto;
+    width: 300px;
+    font-size: 18px;
+    background-color: transparent;
+    color: rgba(90, 72, 248, 0);
+    line-height: 26px;
+    border-radius: 28px;
+    border-color: #32c3d6;
+    cursor: pointer;
+    transition: width 0.2s;
+    float: left;
+    margin-right: 3%;
+    color: rgb(6, 6, 61);
+}
+
+.buttonVolver:hover {
+    width: 320px;
+    background-color: #3cb9cf;
+}
+
+.buttonDe{
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 15%;
+    color: rgb(93, 93, 129);
+        width: 100px;
+        height: 25px;
+        font-size: 15px;
+        font-style:initial
+
+}
+@media (max-width:560px) {
+    .activitycard,.buttonCreate,.buttonDe,.buttonVolver,.activitis {
+        grid-template-columns: 100%;
+    }
 }

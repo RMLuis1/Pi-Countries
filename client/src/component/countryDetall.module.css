@@ -1,0 +1,28 @@
+.list{
+    list-style: none;
+    text-align: center;
+}
+
+.link{
+    display: inline-block;
+    margin-block: 2px;
+    text-decoration: none;
+    color:blue;
+    position: relative;
+}
+.link::after{
+    content: "";
+    width: 100px;
+    height: 1px;
+    background-color: blueviolet;
+    border-radius: 4px;
+    position: absolute;
+    left: 0;    
+    bottom: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s ease;
+    }
+    .link:hover::after{
+        transform: scaleX(1);
+    }

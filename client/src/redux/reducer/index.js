@@ -45,25 +45,26 @@ export default function Reducer(state = initialState, action) {
       return {
         ...state,
       };
-       case ADD_COUTRYBYACTIVITY:
-         return{
-           ...state,
-           activity: action.payload
-         }
-   case FILTER_ACTIVITY:
-      const filterActivities= state.countries2
-      const activit= action.payload === "All"?
-        filterActivities.filter((e)=> e.activities.length > 0) :
-         filterActivities.filter((e)=>{
-
-           return  e.activities.map((e)=>
-           e.name? e.name:e).includes(action.payload)
-           
-          })  
-          return{
-              ...state,
-                countries: activit
-            }
+    case ADD_COUTRYBYACTIVITY:
+      return {
+        ...state,
+        activity: action.payload,
+      };
+    
+    case FILTER_ACTIVITY:
+      const filterActivities = state.countries2;
+      const activit =
+        action.payload === "All"
+          ? filterActivities.filter((e) => e.activities.length > 0)
+          : filterActivities.filter((e) => {
+              return e.activities
+                .map((e) => (e.name ? e.name : e))
+                .includes(action.payload);
+            });
+      return {
+        ...state,
+        countries: activit,
+      };
 
     case FILTER_ALFABETICAMENTE:
       // let soredArr =
@@ -127,64 +128,64 @@ export default function Reducer(state = initialState, action) {
         countries: continentsFilter,
       };
     case FILTER_POPULATION:
+      if (action.payload === "ascendente") {
+        return {
+          ...state,
+          countries: state.countries.sort(function (a, b) {
+            if (a.population > b.population) {
+              return 1;
+            }
+            if (b.population > a.population) {
+              return -1;
+            }
 
-     if(action.payload === "ascendente"){
-     return  { 
-       ...state,
-       countries: state.countries.sort(function (a, b) {
-              if (a.population > b.population) {
-                return 1;
-              }
-              if (b.population > a.population) {
-                return -1;
-              }
+            return 0;
+          }),
+        };
+      } else if (action.payload === "descendente") {
+        const descendent = state.countries.sort(function (a, b) {
+          if (a.population > b.population) {
+            return -1;
+          }
+          if (b.population > a.population) {
+            return 1;
+          }
+          return 0;
+        });
+        return {
+          ...state,
+          countries: descendent,
+        };
+      } else {
+        return { ...state, countries: state.countries };
+      }
+    // let sortPopulation =
+    //   action.payload === "ascendente"
+    //     ? state.countries.sort(function (a, b) {
+    //         if (a.population > b.population) {
+    //           return 1;
+    //         }
+    //         if (b.population > a.population) {
+    //           return -1;
+    //         }
 
-              return 0;
-     })}
-     }  else if (action.payload === "descendente") {
-       const descendent = state.countries.sort(function (a, b) {
-         if (a.population > b.population) {
-           return -1;
-         }
-         if (b.population > a.population) {
-           return 1;
-         }
-         return 0;
-       });
-       return {
-         ...state,
-         countries: descendent,
-       };
-       } else {
-       return { ...state, countries: state.countries };
-     }
-      // let sortPopulation =
-      //   action.payload === "ascendente"
-      //     ? state.countries.sort(function (a, b) {
-      //         if (a.population > b.population) {
-      //           return 1;
-      //         }
-      //         if (b.population > a.population) {
-      //           return -1;
-      //         }
-
-      //         return 0;
-      //       })
-      //     : state.countries.sort(function (a, b) {
-      //         if (a.population > b.population) {
-      //           return -1;
-      //         }
-      //         if (b.population > a.population) {
-      //           return 1;
-      //         }
-      //         return 0;
-      //       });
-      // return {
-      //   ...state,
-      //   countries: sortPopulation,
-      // };
+    //         return 0;
+    //       })
+    //     : state.countries.sort(function (a, b) {
+    //         if (a.population > b.population) {
+    //           return -1;
+    //         }
+    //         if (b.population > a.population) {
+    //           return 1;
+    //         }
+    //         return 0;
+    //       });
+    // return {
+    //   ...state,
+    //   countries: sortPopulation,
+    // };
 
     default:
       return state;
-    }
+  }
 }
