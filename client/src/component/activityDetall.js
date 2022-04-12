@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useParams } from "react-router-dom";
 import { AddCountryByActivity, getActivity, getCountry } from "../redux/accion";
 import { ActivityCard } from "./activitysCard";
+import styles from "./activityDetall.module.css";
 
 export function ActivityDetall() {
   const dispatch = useDispatch();
@@ -43,17 +44,13 @@ export function ActivityDetall() {
     } else {
       dispatch(AddCountryByActivity(e));
       alert("Activity successfully created!");
-      // setInput({
-      //   ...input,
-      //   [e.target.name]: "",
-      // });
     }
   }
 
   return (
     <div>
       <NavLink to="/activity">
-        <button>Volver</button>{" "}
+        <button className={styles.buttonVolver}>Volver</button>{" "}
       </NavLink>
       <br />
       <div>
@@ -69,33 +66,23 @@ export function ActivityDetall() {
                   id={e.id}
                   countries={e.countries.map((e) => {
                     return (
-                      <ul key={e.name}>
-                       <Link to={"/home/" + e.id } >{e.id}</Link> 
-                        <br />
-                        <img
-                          width={50}
-                          height={25}
-                          src={e.flags}
-                          alt="flag not found"
-                        />
-                      </ul>
+                      <div className={styles.countries}>
+                        <ul key={e.name} className={styles.ul}>
+                          <li className={styles.li}>
+                            <Link to={"/home/" + e.id}>{e.id}</Link>
+                            <br />
+                            <img
+                              width={50}
+                              height={25}
+                              src={e.flags}
+                              alt="flag not found"
+                            />{" "}
+                          </li>
+                        </ul>
+                      </div>
                     );
                   })}
                 />
-
-                <form onSubmit={(e) => handleSubmit(e)}>
-                  <select onChange={() => agregarCountry(e)}>
-                    {allCountry.map((e) => {
-                      return (
-                        <option key={e.id} value={e.name} id={e.name}>
-                          {e.name}
-                        </option>
-                      );
-                    })}
-                  </select>
-
-                  <button>Modify Country</button>
-                </form>
               </div>
             );
           }

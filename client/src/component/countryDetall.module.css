@@ -7,8 +7,14 @@
     display: inline-block;
     margin-block: 2px;
     text-decoration: none;
-    color:blue;
+    
     position: relative;
+    color: rgb(54, 54, 61);
+    text-decoration:underline;
+    text-size-adjust:initial;
+    font-variant: small-caps;
+    text-shadow: 7px 4px 5px rgb(209, 198, 198);
+    letter-spacing: 4px;
 }
 .link::after{
     content: "";
@@ -25,4 +31,61 @@
     }
     .link:hover::after{
         transform: scaleX(1);
+    }
+.ulAct{
+    list-style: none;
+    width: 5px;
+    margin: 30px;
+     float: left;
+    display:flexbox;
+    text-align: center;
+    text-decoration: none;
+    
+}
+    .div1{
+    list-style: none;
+    width: 800px;
+    height: 200px;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 240px);
+    gap: 4re;
+    justify-content: center;
+    background-color: none;
+    }
+    .div2 {
+        text-align: center;
+        border: 3px solid rgb(28, 129, 124);
+        background-color: transparent;
+        border-radius: 10%;
+        width: 400px;
+        height: 550px;
+    
+    }
+
+    .title {
+        justify-content: center;
+        text-align: center;
+        text-shadow: 7px 4px 5px rgb(212, 212, 212);
+    
+    }
+    .buttonVolver {
+        height: auto;
+        width: 300px;
+        font-size: 18px;
+        background-color: transparent;
+        color: rgba(90, 72, 248, 0);
+        line-height: 26px;
+        border-radius: 28px;
+        border-color: #32c3d6;
+        cursor: pointer;
+        transition: width 0.2s;
+        float: left;
+        margin-right: 3%;
+        color: rgb(6, 6, 61);
+    }
+    
+    .buttonVolver:hover {
+        width: 320px;
+        background-color: #3cb9cf;
     }

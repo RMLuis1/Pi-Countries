@@ -25,8 +25,8 @@ export function ActivityCard({
         <p>
           <strong>ID: </strong> {id}
         </p>
-        <p>
-          <strong>Country: </strong> {countries}
+        <p className={styles.country}>
+          <strong>Countries: </strong> <br /> {countries}
         </p>
       </li>
     </div>

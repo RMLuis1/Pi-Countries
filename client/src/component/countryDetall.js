@@ -18,12 +18,12 @@ export function Country() {
   return (
     <div>
       <Link to="/home">
-        <button>Volver</button>
+        <button className={styles.buttonVolver} >Volver</button>
       </Link>
-      <div>
+      <div className={styles.div1}>
         {countryDetall ? (
-          <div>
-            <h1>{countryDetall.name}</h1>
+          <div className={styles.div2} >
+            <h1 className={styles.title} >{countryDetall.name}</h1>
             <img
               width={150}
               height={100}
@@ -60,9 +60,10 @@ export function Country() {
               <br />
               {countryDetall.activities?.map((e) => {
                 return (
+                  <ul className={styles.ulAct}>
                   <Link className={styles.link} to={"/activity/" + e.id} key={e.id}>
                     <p>{e.name}</p>
-                  </Link>
+                  </Link></ul>
                 );
               })}
             </div>

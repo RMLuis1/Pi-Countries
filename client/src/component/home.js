@@ -93,13 +93,16 @@ export default function Home() {
 
   return (
     <div>
-      <NavLink to="/activity">
-        <button className={styles.buttonHome}>Activity</button>
-      </NavLink>{" "}
-      <br />
-      <NavLink to="/home"><h1 className={styles.title}>Countries</h1></NavLink>      
-     
-      <Search />
+      <navbar>
+        <NavLink to="/activity">
+          <button className={styles.buttonHome}>Activity</button>
+        </NavLink>{" "}
+        <br />
+        <NavLink to="/home">
+          <h1 className={styles.title}>Countries</h1>
+        </NavLink>
+        <Search />
+      </navbar>
       <div>
         <div className={styles.navbar}>
           <select onChange={(e) => handleSort(e)}>
