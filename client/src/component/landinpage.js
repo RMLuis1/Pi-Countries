@@ -6,30 +6,20 @@ export function Landinpage() {
     <div className={styles.portada}>
       <img
         className={styles.fondodeportada}
-        src="https://elordenmundial.com/wp-content/uploads/2022/02/Que-es-una-zona-de-influencia-y-como-han-servido-para-moldear-el-mundo.jpg"
+        src="https://static9.depositphotos.com/1000423/1203/i/950/depositphotos_12030228-stock-photo-technology-and-the-world.jpg"
         alt="Not found"
       />
 
-      <title className={styles.title}>Bienvenidos</title>
+      <title className={styles.title}>Welcome!</title>
       <p className={styles.FrasePresentacion}>
-        {" "}
-        hola esta es una pagina web de algo..
+        This is a web application, in which you will find Countries with their
+        descriptions and their tourist activities. You can create Activities and
+        associate them to the countries you want...
       </p>
+      <br />
       <NavLink to="/home">
-        <button className={styles.button}>Ingresar</button>
+        <button className={styles.button}>Get in</button>
       </NavLink>
-      <div className={styles.contenedor}>
-      <p className={styles.p}>Hola profe</p>
-      <ul className={styles.lista}>
-        <li>Apruebeme</li>
-        <li>Porfiss!</li>
-        <li>Help me!!!</li>
-
-      </ul>
-
-      </div>
-
-
     </div>
   );
 }

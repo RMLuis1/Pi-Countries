@@ -18,17 +18,13 @@ import { Search } from "./search";
 export default function Home() {
   const dispatch = useDispatch();
 
-  //se usa para despachar las acciones
   const allCountry = useSelector((state) => state.countries);
-  //es un hoock para reemplazar el mapStateToProps
-  //se conecta el estado
-  //sirve para traer el estado de paises...y lo guarda en la constante
-  //que por el momento esta vacio
   const allActivity = useSelector((state) => state.activity);
 
   const [countryPage, setCountryPage] = useState(1);
   const [countryPorPage, setCountryPorPage] = useState(10);
   const [orden, serOrden] = useState("");
+
   const indexOfLastCountry = countryPage * countryPorPage;
   const indexOfFirstCountry = indexOfLastCountry - countryPorPage;
   const currentCountry = allCountry.slice(
@@ -40,21 +36,15 @@ export default function Home() {
     setCountryPage(pageNumber);
   };
 
-  //Effect sirve para actualizar el estado.
   useEffect(() => {
     dispatch(getCountry());
-    //ejecuta la funcion getCountry
   }, [dispatch]);
 
   useEffect(() => {
     dispatch(getActivity());
   }, [dispatch]);
 
-  // function handleClick(e) {
-  //   e.preventDefault();
-  //   dispatch(getCountry());
-  // }
-
+ 
   function handleSort(e) {
     e.preventDefault();
     dispatch(filterCountryByAfabeticamente(e.target.value));
@@ -93,6 +83,11 @@ export default function Home() {
 
   return (
     <div>
+      <img
+        className={styles.fondodeportada}
+        src="https://st.depositphotos.com/2605379/2983/i/950/depositphotos_29833475-stock-photo-world-map.jpg"
+        alt="Not found"
+      />
       <navbar>
         <NavLink to="/activity">
           <button className={styles.buttonHome}>Activity</button>

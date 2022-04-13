@@ -1,12 +1,12 @@
 .buttonHome {
     height: auto;
     width: 300px;
-    font-size: 18px;
+    font-size: 30px;
     background-color: transparent;
     color: rgba(90, 72, 248, 0);
     line-height: 26px;
     border-radius: 28px;
-    border-color: #32c3d6;
+    border-color: #ffffff;
     cursor: pointer;
     transition: width 0.2s;
     float: right;
@@ -18,12 +18,21 @@
     width: 320px;
     background-color: #3cb9cf;
 }
+.fondodeportada {
+    height: 225%;
 
+    width: 100%;
+    /* max-width: max-content; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -100;
+}
 .title{
-   color: rgb(47, 63, 151);
+   color: rgb(8, 8, 8);
     justify-content: center;
     display: flex;
-
+text-shadow: 10px 9px 5px rgb(0, 0, 0)
 }
 
 .navbar{
@@ -47,7 +56,9 @@ align-items: center;
     background-color: none;
 }
 .link{
-    text-decoration: none
+    text-decoration: none;
+    color:rgb(255, 5, 5);
+    font-size: 25px;
 }
 
 @media (max-width:560px) {

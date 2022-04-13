@@ -42,7 +42,7 @@ export function CreateActivity() {
       country: [...input.country, e.target.value],
     });
   }
-    //!va manejando los cambios del input(los guarda)
+  //!va manejando los cambios del input(los guarda)
   function handleChange(e) {
     setInput(() => {
       const newInput = {
@@ -55,7 +55,6 @@ export function CreateActivity() {
     });
     console.log(input);
   }
-  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -71,10 +70,9 @@ export function CreateActivity() {
         season: "",
         difficulty: "",
         duration: "",
-        country:[],
+        country: [],
       });
     }
-
   }
   useEffect(() => {
     dispatch(getCountry());
@@ -96,12 +94,6 @@ export function CreateActivity() {
     } else if (input.difficulty < 1 || input.difficulty > 5) {
       error.difficulty = "Difficulty is number 1 - 5";
     }
-
-    // if (!input.country) {
-    //   error.country = "Country is required";
-    // } else if (!/^[A-Z]+$/i.test(input.country)) {
-    //   error.country = "Country is invalid";
-    // }
 
     return error;
   }
@@ -125,7 +117,7 @@ export function CreateActivity() {
   return (
     <div className={styles.divM}>
       <Link to="/home">
-        <button className={styles.volver}>volver</button>
+        <button className={styles.volver}>Go back</button>
       </Link>
       <br />
       <h1 className={styles.h1t}>Create Activity</h1>
@@ -210,12 +202,7 @@ export function CreateActivity() {
             <select className={styles.input} onChange={(e) => handleCountry(e)}>
               {allCountry?.map((e) => {
                 return (
-                  <option
-                    // onClick={(e) => handleChange(e)}
-                    value={e.name}
-                    key={e.id}
-                    multiple="multiple"
-                  >
+                  <option value={e.name} key={e.id} multiple="multiple">
                     {" "}
                     {e.name}{" "}
                   </option>
@@ -235,92 +222,4 @@ export function CreateActivity() {
       </div>
     </div>
   );
-}
-
-/* <form>
-      <label>Imagen</label>
-      <input type="img" value={input.imagen} onChange={handleChange}/>
-    </form> */
-
-//!VER VALIDACION DE ACTIVIDADES!
-//Validar que la actividad no exista ya
-// const existentActivity = activities.find(
-//   (a) => a.name === addActivity.name
-// );
-// if (existentActivity) {
-//   return MySwal.fire({
-//     title: `La actividad ya existe`,
-//     icon: "warning",
-//     confirmButtonText: "OK",
-//     backdrop: `
-//     rgba(0,0,123,0.4)
-//     left top
-//     no-repeat
-//   `,
-//   });
-// }
-//Todo: SEASON
-//! con varias opciones
-{
-  /* <option onClick={(e) => handleChange(e)} value="default">
-                Moment of the year
-              </option>
-              <option onClick={(e) => handleChange(e)} value="summer">
-                Sumer
-              </option>
-              <option onClick={(e) => handleChange(e)} value="winter">
-                Winter
-              </option>
-              <option onClick={(e) => handleChange(e)} value="fall">
-                Fall
-              </option>
-              <option onClick={(e) => handleChange(e)} value="spring">
-                Spring
-              </option> */
-}
-
-//!DURATION
-//TODO: con opciones
-{
-  /* <option onClick={(e) => handleChange(e)} value="1 Hours">
-                1 Hours
-              </option>
-              <option onClick={(e) => handleChange(e)} value="2 Hours">
-                2 Hours
-              </option>
-              <option onClick={(e) => handleChange(e)} value="3 Hours">
-                3 Hours
-              </option>
-              <option onClick={(e) => handleChange(e)} value="4 Hours +">
-                4 Hours +
-              </option> */
-}
-
-//!COUNTRY
-//TODO: CON INPUT
-{
-  /* <input
-              className={inputError.country && styles.inputdanger}
-              type="text"
-              value={input.country}
-              name="country"
-              onChange={(e) => handleChange(e)}
-            ></input>
-            {inputError.country && (
-              <p className={styles.danger}>{inputError.country}</p>
-            )} */
-}
-{
-  /* {allCountry?.map((e) => {
-              return (
-                <input type="checkbox" name="country" value={e.name} onChange={e=> e.handleChange(e)}/>, e.name
-              
-              );
-            })} */
-}
-{
-  /* onChange={(e) => handleChange(e)} */
-}
-{
-  /* onClick={(e) => handleCountry(e) */
 }

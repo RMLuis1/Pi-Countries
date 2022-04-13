@@ -5,7 +5,7 @@ export default function CountryCard({ flags, name, continents }) {
   return (
     <div className={styles.countriesCard}>
       <li className={styles.li}>
-        <h3>{name}</h3>
+        <h3 className={styles.name} >{name}</h3>
         <img
           width={150}
           height={100}
@@ -13,7 +13,7 @@ export default function CountryCard({ flags, name, continents }) {
           src={flags}
           alt="flag not found"
         />
-        <p>{continents}</p>
+        <p className={styles.conti}>{continents}</p>
       </li>
     </div>
   );

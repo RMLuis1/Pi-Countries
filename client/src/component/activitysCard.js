@@ -11,8 +11,9 @@ export function ActivityCard({
 }) {
   return (
     <div className={styles.activitysCard}>
+     
       <li className={styles.li}>
-        <h3>{name}</h3>
+        <h3 className={styles.name}>{name}</h3>
         <p>
           <strong>Difficulty:</strong> {difficulty}
         </p>

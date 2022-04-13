@@ -18,13 +18,18 @@ export function HomeActivity() {
 
   return (
     <div>
+      <img
+        className={styles.fondodeportada}
+        src="https://st2.depositphotos.com/5970650/10248/i/950/depositphotos_102484512-stock-photo-vintage-compass-magnifying-glass-pocket.jpg"
+        alt="Not found"
+      />
       <NavLink className={styles.link} to="/activity/create">
         <button className={styles.buttonCreate}>Create Activity</button>
       </NavLink>
       <NavLink to="/home">
-        <button className={styles.buttonVolver} >Volver</button>{" "}
+        <button className={styles.buttonVolver}>Volver</button>{" "}
       </NavLink>
-      <br/>
+      <br />
       <h1 className={styles.title}>Activity</h1>
 
       <div className={styles.activityscard}>
@@ -32,11 +37,11 @@ export function HomeActivity() {
           return (
             <ul key={e.id}>
               <div className={styles.activitis}>
-                <h2 className={styles.h1A} >{e.name}</h2>
-                <h4 className={styles.h41} >
+                <h2 className={styles.h1A}>{e.name}</h2>
+                <h4 className={styles.h41}>
                   <strong>Difficulty: </strong> {e.difficulty}
                 </h4>
-                <h4 className={styles.h41} >
+                <h4 className={styles.h41}>
                   <strong>Paises: </strong>
                   {e.countries.length}{" "}
                 </h4>

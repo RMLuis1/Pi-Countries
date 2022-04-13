@@ -14,6 +14,18 @@
 .li{
         list-style:none;
 }
+.name{
+    justify-content: center;
+    text-align: center;
+    text-shadow: 10px 9px 5px rgb(0, 0, 0);
+}
+.conti{
+    font-size: 20px;
+    color:rgb(104, 1, 1);
+    justify-content: center;
+    text-align: center;
+    text-shadow: 10px 9px 5px rgb(0, 0, 0);
+}
 
 .countriesCard:hover {
     opacity: 1;
@@ -24,6 +36,7 @@
 .Image {
     border-radius: 15px;
     background-color: azure;
+    box-shadow:10px 9px 5px rgb(0, 0, 0) ;
 }
 
 @media (max-width: 560px) {

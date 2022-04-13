@@ -49,11 +49,16 @@ export function ActivityDetall() {
 
   return (
     <div>
+      <img
+        className={styles.fondodeportada}
+        src="https://st3.depositphotos.com/13349494/32464/i/1600/depositphotos_324644864-stock-photo-top-view-vintage-blank-notebook.jpg"
+        alt="Not found"
+      />
       <NavLink to="/activity">
-        <button className={styles.buttonVolver}>Volver</button>{" "}
+        <button className={styles.buttonVolver}>Go back</button>{" "}
       </NavLink>
       <br />
-      <div>
+      <div className={styles.divMayor}>
         {activities.map((e) => {
           if (e.id == act) {
             return (

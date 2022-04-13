@@ -8,8 +8,10 @@
 }
 
 .fondodeportada {
-    height: 100%;
+    height: 100vh;
+    
     width: 100%;
+    /* max-width: max-content; */
     position: absolute;
     top: 0;
     left: 0;
@@ -17,96 +19,46 @@
 }
 
 .title{
-    color: wheat;
+    color: rgb(255, 255, 255);
     display: grid;
     font-size:300%;
     gap: 40px;
-    padding: 40px;
+    padding: 70px;
     justify-content: left;
+    font-size: 100px;
 }
 
 .FrasePresentacion {
-    font-size: 20px;
+    font-size: 30px;
     /* font-weight: bold; */
     color: #FFF;
 text-align:left;
 margin-left: 5%;
+padding: auto;
 }
 
 .button{
     height: auto;
     width: 300px;
-    font-size: 18px;
+    font-size: 30px;
     background-color: transparent;
     color: #FFF;
     line-height: 26px;
     border-radius: 28px;
-    border-color: #b00000;
+    border-color: #dfdfdf;
     cursor: pointer;
     transition: width 0.2s;
-   float: left;
+   float:none;
    margin-left: 3%;
+   
 }
 
 .button:hover {
     width: 320px;
-    background-color: #b00000;
+    background-color: #3d4b70;
 }
 
-.contenedor{
-    
-    display: flex;
-    width: 600px;
-    height: 40px;
-    color:#FFF;
-    font-size: 40px;
-    line-height: 40px;
 
-    position: absolute;
-    top:0;
-    right: 100%;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-
-    overflow: hidden;
-
-}
-.lista{
-    list-style: none;
-    padding-left: 10px;
-    animation: cambiar 7s infinite;
-}
-
-.p, .lista{
-    margin: 0;
-}
-
-@keyframes cambiar {
-    0%{
-        margin-top: 0;
-    }
-    20%{
-        margin-top: 0;
-    }
-    25%{
-        margin-top: -40px;
-    }
-    50%{
-        margin-top: -40px;
-    }
-    55%{
-        margin-top: -80px;
-    }   
-    80%{
-        margin-top: -80;
-    }
-    85%{ margin-top: -40px;}
-    95%{
-        margin-top: -40px;
-    }
-    100%{margin-top: 0;}
-}
 
 
 

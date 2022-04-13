@@ -19,6 +19,16 @@
         height: 200px;
 
     }
+.fondodeportada {
+    height: 225%;
+
+    width: 100%;
+    /* max-width: max-content; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -100;
+}
 
 .link {
     text-decoration: none
@@ -28,10 +38,11 @@
     justify-content: center;
     text-align: center;
         text-shadow: 7px 4px 5px rgb(212, 212, 212);
+        font-size: 40px;
 
 }
 .h1A{
-    color: rgb(54, 54, 61);
+    color: rgb(0, 0, 0);
     text-decoration:underline;
     text-size-adjust:initial ;
     font-variant: small-caps;
@@ -39,7 +50,7 @@
     letter-spacing: 4px;
 }
 .h41{
-    color:#576c70;
+    color:#000000;
     font-size: 15px;
 }
 
@@ -47,7 +58,7 @@
 .buttonCreate{
     height: auto;
     width: 300px;
-    font-size: 18px;
+    font-size: 25px;
     background-color: transparent;
     color: rgba(90, 72, 248, 0);
     line-height: 26px;
@@ -57,12 +68,12 @@
     transition: width 0.2s;
     float: right;
     margin-right: 3%;
-    color: rgb(6, 6, 61);
+    color: rgb(0, 0, 0);
 }
 
 .buttonCreate:hover {
     width: 320px;
-    background-color: #3cb9cf;
+    background-color: #33393a;
 }
 .buttonVolver {
     height: auto;
@@ -89,13 +100,20 @@
     background-color: transparent;
     cursor: pointer;
     border-radius: 15%;
-    color: rgb(93, 93, 129);
+    color: rgb(0, 0, 0);
         width: 100px;
         height: 25px;
-        font-size: 15px;
+        font-size: 20px;
         font-style:initial
 
 }
+.buttonDe:hover {
+    width: 120px;
+    background-color: #6e6e6e;
+}
+
+
+
 @media (max-width:560px) {
     .activitycard,.buttonCreate,.buttonDe,.buttonVolver,.activitis {
         grid-template-columns: 100%;

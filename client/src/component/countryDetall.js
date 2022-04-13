@@ -17,13 +17,18 @@ export function Country() {
   console.log(countryDetall);
   return (
     <div>
+      <img
+        className={styles.fondodeportada}
+        src="https://st2.depositphotos.com/1000423/7385/i/950/depositphotos_73854055-stock-photo-world-map.jpg"
+        alt="Not found"
+      />
       <Link to="/home">
-        <button className={styles.buttonVolver} >Volver</button>
+        <button className={styles.buttonVolver}>Go back</button>
       </Link>
       <div className={styles.div1}>
         {countryDetall ? (
-          <div className={styles.div2} >
-            <h1 className={styles.title} >{countryDetall.name}</h1>
+          <div className={styles.div2}>
+            <h1 className={styles.title}>{countryDetall.name}</h1>
             <img
               width={150}
               height={100}
@@ -61,9 +66,14 @@ export function Country() {
               {countryDetall.activities?.map((e) => {
                 return (
                   <ul className={styles.ulAct}>
-                  <Link className={styles.link} to={"/activity/" + e.id} key={e.id}>
-                    <p>{e.name}</p>
-                  </Link></ul>
+                    <Link
+                      className={styles.link}
+                      to={"/activity/" + e.id}
+                      key={e.id}
+                    >
+                      <p>{e.name}</p>
+                    </Link>
+                  </ul>
                 );
               })}
             </div>

@@ -7,9 +7,9 @@
     display: inline-block;
     margin-block: 2px;
     text-decoration: none;
-    
+    font-size: 18px;
     position: relative;
-    color: rgb(54, 54, 61);
+    color: rgb(0, 0, 0);
     text-decoration:underline;
     text-size-adjust:initial;
     font-variant: small-caps;
@@ -45,7 +45,7 @@
     .div1{
     list-style: none;
     width: 800px;
-    height: 200px;
+    height: 350px;
     margin: 2rem auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, 240px);
@@ -59,22 +59,23 @@
         background-color: transparent;
         border-radius: 10%;
         width: 400px;
-        height: 550px;
+        height: 700px;
+        font-size: 18px;
     
     }
 
     .title {
         justify-content: center;
         text-align: center;
-        text-shadow: 7px 4px 5px rgb(212, 212, 212);
+        text-shadow: 7px 4px 5px rgb(97, 97, 97);
     
     }
     .buttonVolver {
         height: auto;
         width: 300px;
-        font-size: 18px;
+        font-size: 25px;
         background-color: transparent;
-        color: rgba(90, 72, 248, 0);
+       
         line-height: 26px;
         border-radius: 28px;
         border-color: #32c3d6;
@@ -82,10 +83,20 @@
         transition: width 0.2s;
         float: left;
         margin-right: 3%;
-        color: rgb(6, 6, 61);
+        color: rgb(185, 185, 185);
     }
     
     .buttonVolver:hover {
         width: 320px;
-        background-color: #3cb9cf;
+        background-color: #0e0a4b;
+    }
+    .fondodeportada {
+        height: auto;
+    
+        width: 100%;
+        /* max-width: max-content; */
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -100;
     }
