@@ -12,13 +12,7 @@ export const FILTER_ACTIVITY = "FILTER_ACTIVITY";
 export const ADD_COUTRYBYACTIVITY = "ADD_COUTRYBYACTIVITY";
 
 
-// export const getCountry= async ()=>{
-//   const country = await axios.get(`http://localhost:3001/countries`);
-//   return (dispacht)({
-//     type: GET_ALL_ACTIVITY,
-//     payload: result.data
-//   })
-// }
+
 
 export const getCountry = () => {
   return (dispatch) => {

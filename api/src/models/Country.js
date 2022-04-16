@@ -40,6 +40,10 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: true,
       },
+      languages: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+      },
       
     },
     { timestamp: false }

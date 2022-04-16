@@ -59,6 +59,7 @@ export function Country() {
               <strong>Population: </strong>
               {countryDetall.population}
             </p>
+            <p> <strong>Languages: </strong> {countryDetall.languages} </p>
 
             <div>
               <strong>Activity: </strong>

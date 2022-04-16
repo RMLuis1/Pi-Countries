@@ -8,15 +8,11 @@ export default function Paginado({ countryPorPage, allCountry, paginado }) {
     pageNumber.push(i + 1);
   }
 
-
   return (
     <div>
       <ul className={styles.pagination}>
         {pageNumber?.map((number) => {
-          
           return (
-            
-              
             <li className={styles.paginado} key={number}>
               <button
                 className={styles.buttonpaginado}

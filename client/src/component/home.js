@@ -44,7 +44,6 @@ export default function Home() {
     dispatch(getActivity());
   }, [dispatch]);
 
- 
   function handleSort(e) {
     e.preventDefault();
     dispatch(filterCountryByAfabeticamente(e.target.value));
@@ -82,22 +81,22 @@ export default function Home() {
     }, []);
 
   return (
-    <div>
-      <img
-        className={styles.fondodeportada}
-        src="https://st.depositphotos.com/2605379/2983/i/950/depositphotos_29833475-stock-photo-world-map.jpg"
-        alt="Not found"
-      />
-      <navbar>
-        <NavLink to="/activity">
-          <button className={styles.buttonHome}>Activity</button>
-        </NavLink>{" "}
-        <br />
-        <NavLink to="/home">
-          <h1 className={styles.title}>Countries</h1>
-        </NavLink>
-        <Search />
-      </navbar>
+    <div className={styles.fondodeportada}>
+      <header className={styles.header}>
+        <div className={styles.title}>
+          <NavLink to="/home">
+            <h1 className={styles.title}>Countries</h1>
+          </NavLink>
+        </div>
+        <div className={styles.search}>
+          <Search />
+        </div>
+        <div className={styles.activity}>
+          <NavLink to="/activity">
+            <button className={styles.buttonHome}>Activity</button>
+          </NavLink>{" "}
+        </div>
+      </header>
       <div>
         <div className={styles.navbar}>
           <select onChange={(e) => handleSort(e)}>
@@ -130,12 +129,14 @@ export default function Home() {
             <option value="descendente">Descendente</option>
           </select>
         </div>
+        <div className={styles.paginado}>
+          <Paginado
+            countryPorPage={countryPorPage}
+            allCountry={allCountry.length}
+            paginado={paginado}
+          />
+        </div>
 
-        <Paginado
-          countryPorPage={countryPorPage}
-          allCountry={allCountry.length}
-          paginado={paginado}
-        />
         <div className={styles.countriescard}>
           {currentCountry?.map((e) => {
             return (

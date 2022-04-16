@@ -59,7 +59,8 @@ router.get("/countries", async (req, res) => {
               subregion: e.subregion ? e.subregion : "No hay Subregion",
               area: e.area,
               population: e.population,
-            };
+              languages: e.languages? e.languages[0] : "No encontrado"
+                          };
           })
         );
         const altCountry = await Country.findAll();
