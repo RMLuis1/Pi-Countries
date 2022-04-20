@@ -15,7 +15,6 @@ const router = Router();
 //! (Debe almacenar solo los datos necesarios para la ruta principal)
 //todo: •	Obtener un listado de los paises.
 
-
 const api = async () => {
   const arr = await axios.get("https://restcountries.com/v3/all");
   // https://restcountries.com/v3.1/all
@@ -59,8 +58,11 @@ router.get("/countries", async (req, res) => {
               subregion: e.subregion ? e.subregion : "No hay Subregion",
               area: e.area,
               population: e.population,
-              languages: e.languages? e.languages[0] : "No encontrado"
-                          };
+              languages: e.languages && Object.values(e.languages),
+              // languages: e.languages? Object.entries(e.languages).forEach(([key,value]) => {
+              //      return value
+              // }) : "No found"
+            };
           })
         );
         const altCountry = await Country.findAll();
@@ -69,12 +71,11 @@ router.get("/countries", async (req, res) => {
         } else {
           res.status(404).send("No existen paises");
         }
-      } 
-      
-      else {
+      } else {
+        console.log;
         res.status(200).send(db);
       }
-    } catch (error) { 
+    } catch (error) {
       console.log("ERROR EN GET", error);
     }
   }
@@ -139,13 +140,9 @@ router.get("/activity", async (req, res) => {
   res.send(activity);
 });
 
-
-
 router.get("/activityByCountry", async (req, res) => {
   const activityByCountry = await tablaInt.findAll();
   res.send(activityByCountry);
 });
-
-
 
 module.exports = router;
