@@ -59,9 +59,6 @@ router.get("/countries", async (req, res) => {
               area: e.area,
               population: e.population,
               languages: e.languages && Object.values(e.languages),
-              // languages: e.languages? Object.entries(e.languages).forEach(([key,value]) => {
-              //      return value
-              // }) : "No found"
             };
           })
         );

@@ -58,6 +58,18 @@ padding: auto;
     background-color: #3d4b70;
 }
 
+.a {
+    color: white;
+    font-size: 40px
+}
+
+.a:hover {
+    color: cornflowerblue;
+    opacity: 10;
+    font-size: 1.5rem;
+    font-family: fantasy;
+    animation-direction: alternate;
+}
 
 
 

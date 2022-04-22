@@ -14,12 +14,15 @@ import styles from "./home.module.css";
 import CountryCard from "./countriesCard.js";
 import Paginado from "./paginadoCountries";
 import { Search } from "./search";
+import { Spinner } from "./Spinner";
 
 export default function Home() {
   const dispatch = useDispatch();
 
   const allCountry = useSelector((state) => state.countries);
   const allActivity = useSelector((state) => state.activity);
+
+    const [isLoading, setIsLoading] = useState(true);
 
   const [countryPage, setCountryPage] = useState(1);
   const [countryPorPage, setCountryPorPage] = useState(10);
@@ -36,13 +39,26 @@ export default function Home() {
     setCountryPage(pageNumber);
   };
 
-  useEffect(() => {
-    dispatch(getCountry());
-  }, [dispatch]);
+  setTimeout(() => {
+setIsLoading(true);
+
+setIsLoading(false);
+}, 3000);
+
 
   useEffect(() => {
+dispatch(getCountry());
+
+  }, [dispatch]);
+
+useEffect(() => {
+
     dispatch(getActivity());
   }, [dispatch]);
+  
+  
+  
+  
 
   function handleSort(e) {
     e.preventDefault();
@@ -80,6 +96,13 @@ export default function Home() {
       return acc;
     }, []);
 
+    if (isLoading) {
+      return (
+        <div>
+          <Spinner />
+        </div>
+      );
+    }
   return (
     <div className={styles.fondodeportada}>
       <header className={styles.header}>
