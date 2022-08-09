@@ -7,7 +7,7 @@ import styles from "./addActivity.module.css";
 
 export function CreateActivity() {
   const dispatch = useDispatch();
-  const activities = useSelector((state) => state.activity);
+  // const activities = useSelector((state) => state.activity);
   const allCountry = useSelector((state) => state.countries);
 
   const [input, setInput] = useState({
@@ -79,7 +79,7 @@ export function CreateActivity() {
   }, [dispatch]);
   useEffect(() => {
     dispatch(addActivity(input));
-  }, [dispatch]);
+  }, [input,dispatch]);
 
   function validate(input) {
     let error = {};

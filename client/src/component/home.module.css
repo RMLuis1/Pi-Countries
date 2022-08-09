@@ -1,15 +1,20 @@
-.fondodeportada {
-    background-image: url("");
-  
+.contariner{
+    display: inline-block;
+        position: relative;
+        width: 100%;
+        background-size: contain;
 }
+
+
 .header{
      width: 100%;
-     overflow: hidden;
+     /* overflow: hidden; */
      background:rgb(110, 110, 110);
-    position: fixed;
-    height: 75px;
-    margin:auto;
-    top: 0;
+    position: absolute;
+    height: 90px;
+  left: 0px;
+    /* margin:auto; */
+    top: 0px;
   
        
 } .buttonHome {
@@ -17,13 +22,13 @@
       width: 290px; 
      font-size: 30px; 
      background-color: transparent; 
-     color: rgba(90, 72, 248, 0); 
-   line-height: 26px; 
+     color: rgba(211, 211, 211, 0); 
+   /* line-height: 26px;  */
      border-radius: 28px; 
     border-color: #ffffff; 
      cursor: pointer; 
      transition: width 0.2s; 
-     float: right; 
+    /* float: right;  */
      margin-right: 3%; 
     color: rgb(6, 6, 61); 
  } 
@@ -33,21 +38,29 @@
     background-color: #3cb9cf;
 } 
 
-.title{
-   color: rgb(8, 8, 8);
+.titulo{
+   color: rgb(224, 224, 224);
    font-size: 40px;
-   line-height: 10px;
-   float: left; 
+   /* line-height: 10px; */
+   /* float: left;  */
+position: absolute;
+display: flex;
+/* top: 0%; */
+margin: 10px;
+  left: -15%;
 }
 
 
- .search{display: inline-block;
+ .search{
+    /* display: inline-block; */
+    display:list-item;
 padding: 10px 20px;
 /* line-height: normal; */
+position:absolute;
 font-size: 20px;
 font-weight: bold;
 margin: 10px;
-margin-left: 300px;
+margin-left: 18%;
 } 
 .activity{
 padding: 20px 20px;
@@ -59,19 +72,55 @@ float: right;
 
 } 
 
-.navbar{
-list-style: none;
-width: 80%;
-margin: 2rem auto;
-display: flex;
-justify-content: center;
-align-items: center;
-margin-top: 90px;
+.navBar{
+    position: absolute;
+    /* position:fixed; */
+    
+/* right: -150%; */
+    top: 3%;
+    left:15%;
+    padding: 10px 10px;
+    color: black;
+    background: linear-gradient(to bottom right, #797678, #c2a3a3);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+.navBar :is(select, button) {
+    color: inherit;
+    border: none;
+    background: transparent;
+    outline: none;
+}
+.selection {
+    width: 0;
+    transition: width .5s;
+}
 
+.filterButton{
+        width: 10%;
+            height: 25%;
+            position: relative;
+            margin: 0;
+            display: flex;
+            place-items: center;
+            cursor: pointer;
 }
-.paginado{
-   margin-bottom: 30px;
+.navBar:focus-within select {
+    width: 100px;
+    /* margin-top: auto; */
 }
+
+::placeholder {
+    color: inherit;
+}
+
+/* .paginado{ */
+    /* position: relative; */
+    /* justify-content: center; */
+   /* margin-top: 10%; */
+   /* width: 40px; */
+/* } */
 
 .countriescard {
     list-style: none;

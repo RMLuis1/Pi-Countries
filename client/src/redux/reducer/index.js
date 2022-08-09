@@ -27,9 +27,19 @@ export default function Reducer(state = initialState, action) {
         countries2: action.payload,
       };
     case GET_ALL_COUNTRIESNAME:
+      const search = state.countries2;
+      console.log("esto es search", search)
+      console.log("Esto es el reducer",action.payload)
+      const buscador =
+        action.payload.length > 1
+          ? search.filter((e) =>
+              e.name.toLowerCase().includes(action.payload.toLowerCase())
+            )
+          : search;
+          console.log("esto es buscador",buscador)
       return {
         ...state,
-        countries: action.payload,
+        countries: buscador,
       };
     case GET_ALL_COUNTRIESID:
       return {
@@ -101,9 +111,8 @@ export default function Reducer(state = initialState, action) {
 
     case FILTER_POPULATION:
       if (action.payload === "ascendente") {
-        return {
-          ...state,
-          countries: state.countries.sort(function (a, b) {
+
+        let order= state.countries.sort(function (a, b) {
             if (a.population > b.population) {
               return 1;
             }
@@ -112,7 +121,10 @@ export default function Reducer(state = initialState, action) {
             }
 
             return 0;
-          }),
+          })
+        return {
+          ...state,
+          countries: order
         };
       } else if (action.payload === "descendente") {
         const descendent = state.countries.sort(function (a, b) {

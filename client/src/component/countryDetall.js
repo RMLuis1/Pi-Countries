@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getCountriesID } from "../redux/accion";
-import styles from "./countryDetall.module.css"
-
+import styles from "./countryDetall.module.css";
 
 export function Country() {
   const dispatch = useDispatch();
@@ -11,17 +10,12 @@ export function Country() {
 
   useEffect(() => {
     dispatch(getCountriesID(id));
-  }, [dispatch]);
+  }, [id, dispatch]);
 
   const countryDetall = useSelector((state) => state.country);
   console.log(countryDetall);
   return (
     <div>
-      <img
-        className={styles.fondodeportada}
-        src="https://st2.depositphotos.com/1000423/7385/i/950/depositphotos_73854055-stock-photo-world-map.jpg"
-        alt="Not found"
-      />
       <Link to="/home">
         <button className={styles.buttonVolver}>Go back</button>
       </Link>
@@ -59,14 +53,17 @@ export function Country() {
               <strong>Population: </strong>
               {countryDetall.population}
             </p>
-            <p> <strong>Languages: </strong> {countryDetall.languages} </p>
+            <p>
+              {" "}
+              <strong>Languages: </strong> {countryDetall.languages}{" "}
+            </p>
 
             <div>
               <strong>Activity: </strong>
               <br />
               {countryDetall.activities?.map((e) => {
                 return (
-                  <ul className={styles.ulAct}>
+                  <ul key={e.id} className={styles.ulAct}>
                     <Link
                       className={styles.link}
                       to={"/activity/" + e.id}

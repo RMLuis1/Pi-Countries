@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getActivity} from "../redux/accion";
@@ -18,12 +18,7 @@ export function HomeActivity() {
 
   return (
     <div>
-      <img
-        className={styles.fondodeportada}
-        src="https://st2.depositphotos.com/5970650/10248/i/950/depositphotos_102484512-stock-photo-vintage-compass-magnifying-glass-pocket.jpg"
-        alt="Not found"
-      />
-      <NavLink className={styles.link} to="/activity/create">
+       <NavLink className={styles.link} to="/activity/create">
         <button className={styles.buttonCreate}>Create Activity</button>
       </NavLink>
       <NavLink to="/home">

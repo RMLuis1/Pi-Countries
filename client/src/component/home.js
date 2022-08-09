@@ -21,26 +21,27 @@ export default function Home() {
 
   const allCountry = useSelector((state) => state.countries);
   const allActivity = useSelector((state) => state.activity);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  const [serOrden] = useState("");
 
-    const [isLoading, setIsLoading] = useState(true);
+  const [pagina, setPagina] = useState(1);
+  const [countriPorPagina] = useState(12);
 
-  const [countryPage, setCountryPage] = useState(1);
-  const [countryPorPage, setCountryPorPage] = useState(10);
-  const [orden, serOrden] = useState("");
 
-  const indexOfLastCountry = countryPage * countryPorPage;
-  const indexOfFirstCountry = indexOfLastCountry - countryPorPage;
+  const indexUltimoCountri= pagina * countriPorPagina;
+  const indexPrimerCountri = indexUltimoCountri- countriPorPagina;
   const currentCountry = allCountry.slice(
-    indexOfFirstCountry,
-    indexOfLastCountry
+    indexPrimerCountri,
+    indexUltimoCountri
   );
 
-  const paginado = (pageNumber) => {
-    setCountryPage(pageNumber);
-  };
+  // const paginado = (pageNumber) => {
+  //   setPagina(pageNumber);
+  // };
 
   setTimeout(() => {
-setIsLoading(true);
+// setIsLoading(true);
 
 setIsLoading(false);
 }, 3000);
@@ -52,7 +53,6 @@ dispatch(getCountry());
   }, [dispatch]);
 
 useEffect(() => {
-
     dispatch(getActivity());
   }, [dispatch]);
   
@@ -63,7 +63,7 @@ useEffect(() => {
   function handleSort(e) {
     e.preventDefault();
     dispatch(filterCountryByAfabeticamente(e.target.value));
-    setCountryPage(1);
+    setPagina(1);
     serOrden(`Ordenado ${e.target.value}`);
   }
 
@@ -83,7 +83,7 @@ useEffect(() => {
   function handleSortPopulation(e) {
     e.preventDefault();
     dispatch(filterCountryByPopulation(e.target.value));
-    setCountryPage(1);
+    setPagina(1);
     serOrden(`Ordenado ${e.target.value}`);
   }
 
@@ -104,11 +104,11 @@ useEffect(() => {
       );
     }
   return (
-    <div className={styles.fondodeportada}>
+    <div className={styles.container}>
       <header className={styles.header}>
         <div className={styles.title}>
           <NavLink to="/home">
-            <h1 className={styles.title}>Countries</h1>
+            <h1 className={styles.titulo}>Countries</h1>
           </NavLink>
         </div>
         <div className={styles.search}>
@@ -121,14 +121,21 @@ useEffect(() => {
         </div>
       </header>
       <div>
-        <div className={styles.navbar}>
-          <select onChange={(e) => handleSort(e)}>
-            <option value="">Orden ALfabetico</option>
-            <option value="ascendente">A-Z</option>
-            <option value="descendente">Z-A</option>
+        {/* <div className={styles.containerFilter}> */}
+        <div className={styles.navBar}>
+          <select className={styles.selection} onChange={(e) => handleSort(e)}>
+            <optgroup label="Orden ALfabetico">
+              <option value="all">Orden ALfabetico</option>
+              <option value="ascendente">A-Z</option>
+              <option value="descendente">Z-A</option>
+            </optgroup>
           </select>
-          <select onChange={(e) => handlefilterContinents(e)}>
-            <option value="All">Continents</option>
+          <select
+            className={styles.selection}
+            label="Continents"
+            onChange={(e) => handlefilterContinents(e)}
+          >
+            <option value="All">All Continents</option>
             <option value="North America"> North America</option>
             <option value="South America"> South America</option>
             <option value="Asia">Asia</option>
@@ -137,7 +144,11 @@ useEffect(() => {
             <option value="Europe">Europe</option>
             <option value="Oceania">Oceania</option>
           </select>
-          <select onChange={(e) => handleActivity(e)}>
+          <select
+            className={styles.selection}
+            label="Activity"
+            onChange={(e) => handleActivity(e)}
+          >
             <option disabled>Filter by Activity</option>,
             <option value="All">All Activity</option>,
             {norepeat.map((e) => (
@@ -146,18 +157,32 @@ useEffect(() => {
               </option>
             ))}
           </select>
-          <select onClick={(e) => handleSortPopulation(e)}>
-            <option value="Default">Population</option>
+          <select
+            className={styles.selection}
+            label="Population"
+            onClick={(e) => handleSortPopulation(e)}
+          >
+            <option value="All">Population</option>
             <option value="ascendente">Ascendente</option>
             <option value="descendente">Descendente</option>
           </select>
+          {/* </select> */}
+          <button className={styles.filterButton}>Filter</button>
         </div>
+        {/* </div> */}
         <div className={styles.paginado}>
           <Paginado
-            countryPorPage={countryPorPage}
+            countriPorPagina={countriPorPagina}
+            pagina={pagina}
+            indexUltimoCountri={indexUltimoCountri}
+            setPagina={setPagina}
+            allCountry={allCountry.length}
+          />
+          {/* <Paginado
+            countriPorPagina={countriPorPagina}
             allCountry={allCountry.length}
             paginado={paginado}
-          />
+          /> */}
         </div>
 
         <div className={styles.countriescard}>

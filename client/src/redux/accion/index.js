@@ -16,15 +16,11 @@ export const ADD_COUTRYBYACTIVITY = "ADD_COUTRYBYACTIVITY";
 
 export const getCountry = () => {
   return (dispatch) => {
-    //es una funcion que dispacha la accion
-    axios.get(`http://localhost:3001/countries`).then((result) => {
+     axios.get(`http://localhost:3001/countries`).then((result) => {
       return dispatch({
         type: GET_ALL_COUNTRY,
         payload: result.data,
-        //el payload(nombre por convencion) son los datos que le pasamos al reducer
-        //las acciones nunca tienen logica, solo agarran algo y lo pasan
-        //"esta la respuesta del pedido, tiene el resultado de la accion"
-        //!LAS ACCIONES PUEDEN TENER LOGICA, PERO NO DEBEN TENER
+        
       });
     });
   };
@@ -41,6 +37,9 @@ export function getCountriesID(id) {
       });
   };
 }
+
+
+
 export const getActivity = () => {
   return (dispatch) => {
     axios.get("http://localhost:3001/activity").then((result) => {
@@ -97,21 +96,10 @@ export function AddCountryByActivity(payload){
   };
 }
 
-
-
-export function getSearch(name) {
-  return async function (dispatch) {
-    return await axios
-      .get(`http://localhost:3001/countries?name=${name}`)
-      .then((result) => {
-        return dispatch({
-          type: GET_ALL_COUNTRIESNAME,
-          payload: result.data,
-        });
-      })
-      .catch(function (error) {
-        alert("El pais que buscas no existe"); 
-        console.log( error.name + "El pais que busca no existe:" + error.message);
-      });
-  };
+export function getSearch(payload){
+  return {
+    type: GET_ALL_COUNTRIESNAME,
+    payload
+  }
 }
+
