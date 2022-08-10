@@ -3,9 +3,10 @@
     align-items: flex-end;
     /* justify-content: center; */
     position: absolute;
-    top:17%;
+    top:25%;
     /* bottom: 0; */
     width: 100%;
+    left: 32%;
     margin-bottom: 7%;
     /* top:45px */
 
@@ -98,6 +99,7 @@
 .paginationUl li.active {
     background-color: white;
     color: black;
+        /* margin: 25px -5px 0 -5px; */
     height: 45px;
     width: 45px;
     border-radius: 50%;
@@ -107,16 +109,23 @@
 .paginationUl li.numb:hover,
 /* .paginationUl li button.buttonPrev:hover,
 .paginationUl li button.buttonNext:hover, */
-.paginationUl li.first:hover,
-.paginationUl li.last:hover {
+.paginationUl li.first:hover{
     color: #fff;
     background: var(--color5);
     line-height: 45px;
 }
 
-@media (max-width: 724px) {
+.paginationUl li.last:hover{
+    color: rgb(255, 255, 255);
+        background: var(--color5);
+        line-height: 25px;
+}
+
+@media (max-width: 767px) {
     .container {
         width: 100%;
+        top:15%;
+       left:30%;
     }
 
     .paginationUl {
@@ -176,21 +185,26 @@
     .paginationUl li.first:hover,
     .paginationUl li.last:hover {
         color: #fff;
-        background: #20b2aa;
+        background: #868686;
     }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+@media  (min-width: 768px) and (max-width: 1023px){
     .container {
-        margin-top: 15vh;
-    }
+      top:24%; 
+      width: 100%;
+    left: 20%;
+      
+ }
 }
-
+/* 
 @media (min-width: 1024px) {
     .container {
-        margin-top: 5vh;
+        margin-top: 4%;
+      margin-left:15%;
     }
-}
+} */
+
 
 
 

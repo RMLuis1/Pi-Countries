@@ -1,16 +1,29 @@
-.activityscard {
-    list-style: none;
-    width: 800px;
-    height: 200px;
-    margin: 2rem auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 240px);
-    gap: 4re;
-    justify-content: center;
-    background-color: none;
+.contariner {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    background-size: contain;
 }
 
-    .activitis {
+.activityscard {
+      list-style: none;
+        width: 90%;
+        display: grid;
+        position: absolute;
+        top: 25%;
+        margin: 0%;
+        left: 5%;
+        margin-bottom: 5%;
+        height: 100%;
+        grid-template-columns: repeat(auto-fill, 340px);
+    
+        justify-content: center;
+        object-fit: cover;
+        bottom: 0%;
+
+  }
+
+    /* .activitis {
         text-align: center;
         border: 3px solid rgb(28, 129, 124);
         background-color: transparent;
@@ -18,7 +31,37 @@
         width: 150px;
         height: 200px;
 
-    }
+    } */
+        .activitis {
+            font-size: 13px;
+            height: 230px;
+            text-align: center;
+            border-radius: 1rem;
+            background: linear-gradient(to bottom right, #79767815, #c2a3a3a1, rgba(145, 145, 145, 0.295), rgba(243, 243, 243, 0.247));
+    
+    
+            position: relative;
+            width: 95%;
+            max-width: 300px;
+    
+            cursor: pointer;
+        }
+    
+        .activitis::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(42, 29, 54);
+            transform: scale(0);
+            transition: all 800ms linear;
+            transform-origin: 0 50%;
+            z-index: 2;
+            opacity: 0.3;
+            border-radius: 1rem;
+        }
 .fondodeportada {
     height: 225%;
 
@@ -35,14 +78,22 @@
   
 }
 .title{
-    justify-content: center;
-    text-align: center;
-        text-shadow: 7px 4px 5px rgb(212, 212, 212);
-        font-size: 40px;
+color: rgb(224, 224, 224);
+    font-size: 40px;
+    /* line-height: 10px; */
+    /* float: left;  */
+    position: absolute;
+    display: flex;
+    /* top: 0%; */
+    margin: 10px;
+    top:0%;
+    left: 0%;
+    transition: 1.5s;
+    font-family: 'Josefin Sans', sans-serif;
 
 }
 .h1A{
-    color: rgb(0, 0, 0);
+    color: rgb(219, 219, 219);
     text-decoration:underline;
     text-size-adjust:initial ;
     font-variant: small-caps;
@@ -50,57 +101,57 @@
     letter-spacing: 4px;
 }
 .h41{
-    color:#000000;
+    color:#dddddd;
     font-size: 15px;
 }
 
 
 .buttonCreate{
-    height: auto;
-    width: 300px;
-    font-size: 25px;
-    background-color: transparent;
-    color: rgba(90, 72, 248, 0);
-    line-height: 26px;
-    border-radius: 28px;
-    border-color: #32c3d6;
-    cursor: pointer;
-    transition: width 0.2s;
-    float: right;
-    margin-right: 3%;
-    color: rgb(0, 0, 0);
+    position:absolute;
+    top: 1%;
+        height: 7%;
+        left: 30%;
+        width: 200px;
+        font-size: 20px;
+        background: linear-gradient(to bottom right, #797678, #c2a3a3);
+       
+        border-radius: 5px;
+       
+        cursor: pointer;
+        transition: 1.5s;
+        margin-right: 3%;
+        color: white;
 }
 
 .buttonCreate:hover {
-    width: 320px;
-    background-color: #33393a;
+  color:black;
 }
 .buttonVolver {
-    height: auto;
-    width: 300px;
-    font-size: 18px;
-    background-color: transparent;
-    color: rgba(90, 72, 248, 0);
-    line-height: 26px;
-    border-radius: 28px;
-    border-color: #32c3d6;
-    cursor: pointer;
-    transition: width 0.2s;
-    float: left;
-    margin-right: 3%;
-    color: rgb(6, 6, 61);
+    position: absolute;
+        top: 1%;
+    height: 7%;
+    left:15%;
+        width: 200px;
+        font-size: 20px;
+        background: linear-gradient(to bottom right, #797678, #c2a3a3);
+    
+        border-radius: 5px;
+    
+        cursor: pointer;
+        transition: 1.5s;
+        margin-right: 3%;
+        color: white;
 }
 
 .buttonVolver:hover {
-    width: 320px;
-    background-color: #3cb9cf;
+    color: black;
 }
 
 .buttonDe{
     background-color: transparent;
     cursor: pointer;
     border-radius: 15%;
-    color: rgb(0, 0, 0);
+    color: rgb(243, 243, 243);
         width: 100px;
         height: 25px;
         font-size: 20px;

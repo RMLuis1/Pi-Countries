@@ -1,47 +1,125 @@
 .countriesCard {
-    width:100% ;
-    
-    height:100%;
     font-size: 13px;
+    height:230px;
     text-align: center;
-    color: rgb(54, 100, 153);
-    text-decoration: none;
-   background-color: transparent;
-   border-radius: 1rem;
-   
-    border: 3px solid rgb(202, 202, 202) ;
+    border-radius: 1rem;
+    background: linear-gradient(to bottom right, #79767815, #c2a3a3a1, rgba(145, 145, 145, 0.295), rgba(243, 243, 243, 0.247));
+    
+
+    position: relative;
+    width: 95%;
+    max-width: 300px;
+    
+    cursor: pointer;
 }
-.li{
-        list-style:none;
+.countriesCard::before{
+ 
+
+content: "";
+position: absolute;
+top:0;
+left:0;
+width: 100%;
+height: 100%;
+background-color: rgb(42, 29, 54);
+transform:scale(0);
+transition: all 800ms linear;
+transform-origin: 0 50%;
+z-index: 2;
+opacity: 0.3;
+    border-radius: 1rem;
+}
+.countriesCard:hover::before{
+    transform: scale(1);
+}
+span{
+    position: relative;
+    color: #fff;
+    opacity: 0;
+    transition: all 800ms linear;
+    z-index: 10;
 }
 .name{
-    justify-content: center;
-    text-align: center;
-    text-shadow: 10px 9px 5px rgb(0, 0, 0);
+   
+    display: flex;
+    font-size: 1.5rem;
+    margin-left: 25%;
+    margin-top: -25%;
+    color: linear-gradient(to bottom right, #79767815, #c2a3a3a1, rgba(145, 145, 145, 0.295), rgba(243, 243, 243, 0.247));;
+    border-color: black;
 }
 .conti{
-    font-size: 20px;
-    color:rgb(104, 1, 1);
-    justify-content: center;
-    text-align: center;
-    text-shadow: 10px 9px 5px rgb(0, 0, 0);
+    
+    color: linear-gradient(to bottom right, #500135, #c50d0dfd, rgb(255, 255, 255), rgba(0, 0, 0, 0.993));
+    font-size: 1rem;
+    margin-left: 25%;
+    margin-top:-8%;
+    width: 50%;
 }
 
-.countriesCard:hover {
+.countriesCard:hover span {
     opacity: 1;
-    -webkit-transform: scale(1.3);
-    transform: scale(1.3);
 }
 
-.Image {
-    border-radius: 15px;
-    background-color: azure;
-    box-shadow:10px 9px 5px rgb(0, 0, 0) ;
+.lineTop, .lineLeft{
+    left:0;
+    top:0;
+    position: absolute;
+    background: #fff;
+    transition: all 800ms linear;
 }
+
+.lineTop{
+    width: 3px;
+    height: 0;
+    left: 20%;
+}
+.countriesCard:hover .lineTop {
+    height: 100%;
+}
+
+.lineLeft{
+    width: 0;
+    height: 4px;
+    top:90%
+}
+
+.countriesCard:hover .lineLeft {
+    width: 100%;
+}
+
+
+
+.li{
+        list-style:none;
+      
+}
+
+
+.image {
+    width: 80%;
+    height:200px;
+    object-fit: cover;
+        border-radius: 1rem;
+        margin-top: 5%;
+ }
 
 @media (max-width: 560px) {
     .Image {
         width: 90%;
         height: auto;
+    }
+}
+@media( max-width: 424px){
+    .name{
+        font-size: 0.8rem;
+        left:25%;
+        top:50%;
+    }
+    .conti{
+        font-size: 0.8rem;
+        left: 25%;
+        top:65%;
+        width: 50%;
     }
 }

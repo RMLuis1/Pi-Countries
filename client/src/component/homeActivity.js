@@ -17,7 +17,7 @@ export function HomeActivity() {
   }, [dispach]);
 
   return (
-    <div>
+    <div className={styles.container}>
        <NavLink className={styles.link} to="/activity/create">
         <button className={styles.buttonCreate}>Create Activity</button>
       </NavLink>
@@ -25,7 +25,7 @@ export function HomeActivity() {
         <button className={styles.buttonVolver}>Volver</button>{" "}
       </NavLink>
       <br />
-      <h1 className={styles.title}>Activity</h1>
+      <title className={styles.title}>Activity</title>
 
       <div className={styles.activityscard}>
         {allActivity?.map((e) => {

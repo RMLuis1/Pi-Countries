@@ -4,7 +4,12 @@
 }
 
 .inputdanger {
-    border: 2px solid red;
+border: rgb(231, 1, 1);
+    border-bottom: 1px solid #9b0808;
+    padding: 10px;
+    width: 65%;
+    background: transparent;
+    transition: all .25s ease;
 }
 
 .divM {
@@ -12,28 +17,22 @@
   width: 600px;
   height: 470px;
   margin: 40px auto 0;
-  background-image: url('http://www.imgbase.info/images/safe-wallpapers/digital_art/1_miscellaneous_digital_art/41750_1_miscellaneous_digital_art_simple_dark_shapes.jpg');
   background-size: 100%;
   background-repeat: no-repeat;
   background-position-y: -600%;
-  background-color: #000;
+background: linear-gradient(to bottom right, #353535, #c7bfbf);
   border-radius: 4px;
   color: #FFF;
   box-shadow: 0px 0px 50px 5px rgba(0, 0, 0, 0.5);
 }
 
-
-/* .volver {
-    /* margin: 20px;
-    font-size: 18px;
-    cursor: pointer; */
 .volver {
     position:static;
     border-radius: 30px;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
-    background-color: rgb(42, 41, 43);
-    color: #FFF;
+    background: linear-gradient(to bottom right, #797678, #c2a3a3);
+    color:white;
     padding: 12px 35px;
     display: inline-block;
     font-size: 12px;
@@ -43,11 +42,10 @@
     bottom: 30px;
     cursor: pointer;
     transition: all .25s ease;
-    box-shadow: -5px 10px 20px 0px rgba(150, 89, 89, 0.4);
 }
 
 .volver:hover {
-    background-color: #8e62dc;
+    color:black;
 }
 
 
@@ -60,7 +58,7 @@
   background-position-x: 0%;
   background-position-y: -1px;
   background-repeat: no-repeat;
-  background-color: #FFF;
+background: linear-gradient(to bottom right, #797678, #c2a3a3);
   border-radius: 4px;
   color: #333;
   box-shadow: 0px 0px 60px 5px rgba(0, 0, 0, 0.4);
@@ -75,7 +73,7 @@
     height: 0;
     border-left: 0px solid transparent;
     border-right: 10px solid transparent;
-    border-bottom: 10px solid #7149c7;
+    border-bottom: 10px solid #3f3f3f;
 }
 
 .h1t {
@@ -88,7 +86,7 @@
 
 .input {
     border: black;
-    border-bottom: 1px solid #6d61b3;
+    border-bottom: 1px solid #ffffff;
     padding: 10px;
     width: 65%;
     background: transparent;
@@ -98,7 +96,7 @@
 
 .input:focus {
     outline: none;
-    border-bottom: 1px solid #a77cf4;
+    border-bottom: 1px solid #141414;
 }
 
 .submit {
@@ -106,8 +104,8 @@
     border-radius: 30px;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
-    background-color: #a77cf4;
-    color: #FFF;
+    background: linear-gradient(to bottom right, #797678, #c2a3a3);
+        color: white;
     padding: 12px 25px;
     display: inline-block;
     font-size: 12px;
@@ -121,7 +119,7 @@
 }
 
 .submit:hover {
-    background-color: #19181a;
+    color:black;
 }
 
 

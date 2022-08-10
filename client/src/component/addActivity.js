@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addActivity, getCountry } from "../redux/accion";
 import styles from "./addActivity.module.css";
+import Swal from 'sweetalert2'
 
 export function CreateActivity() {
   const dispatch = useDispatch();
@@ -60,10 +61,22 @@ export function CreateActivity() {
     e.preventDefault();
 
     if (!input.name || !input.duration || !input.difficulty || !input.season) {
-      return alert("Todos los campos son obligatorios");
+      return Swal.fire({
+        title: "Error!",
+        text: "Todos los campos son obligatorios",
+        icon: "error",
+        background: ("#797678", "#c2a3a3"),
+        confirmButtonColor: ("#808080", " 	#C0C0C0"),
+      });
     } else {
       dispatch(addActivity(input));
-      alert("Activity successfully created!");
+      Swal.fire({
+        title: "Success!",
+        text: "Activity successfully created!",
+        icon: "success",
+        background: ("#797678", "#c2a3a3"),
+        confirmButtonColor: ("#808080", " 	#C0C0C0"),
+      });
       setInput({
         ...input,
         name: "",
@@ -120,7 +133,7 @@ export function CreateActivity() {
         <button className={styles.volver}>Go back</button>
       </Link>
       <br />
-      <h1 className={styles.h1t}>Create Activity</h1>
+      <h2 className={styles.h1t}>Create Activity</h2>
       <div className={styles.div2}>
         <form onSubmit={handleSubmit}>
           <div>

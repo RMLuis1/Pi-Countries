@@ -5,15 +5,17 @@ export default function CountryCard({ flags, name, continents }) {
   return (
     <div className={styles.countriesCard}>
       <li className={styles.li}>
-        <h3 className={styles.name} >{name}</h3>
         <img
-          width={150}
-          height={100}
           className={styles.image}
           src={flags}
           alt="flag not found"
         />
-        <p className={styles.conti}>{continents}</p>
+        <span>
+        <p className={styles.name} >{name}</p></span>
+        <span>
+        <p className={styles.conti} >{continents}</p></span>
+        <span className={styles.lineTop}></span>
+        <span className={styles.lineLeft}></span>
       </li>
     </div>
   );

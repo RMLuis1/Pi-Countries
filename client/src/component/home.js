@@ -9,7 +9,7 @@ import {
   getActivity,
   filterActivity,
 } from "../redux/accion/index";
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import styles from "./home.module.css";
 import CountryCard from "./countriesCard.js";
 import Paginado from "./paginadoCountries";
@@ -22,15 +22,15 @@ export default function Home() {
   const allCountry = useSelector((state) => state.countries);
   const allActivity = useSelector((state) => state.activity);
   const [isLoading, setIsLoading] = useState(true);
-  
-  const [serOrden] = useState("");
 
+  const [orden, setOrden] = useState("");
+
+  console.log(orden);
   const [pagina, setPagina] = useState(1);
-  const [countriPorPagina] = useState(12);
+  const [countriPorPagina] = useState(8);
 
-
-  const indexUltimoCountri= pagina * countriPorPagina;
-  const indexPrimerCountri = indexUltimoCountri- countriPorPagina;
+  const indexUltimoCountri = pagina * countriPorPagina;
+  const indexPrimerCountri = indexUltimoCountri - countriPorPagina;
   const currentCountry = allCountry.slice(
     indexPrimerCountri,
     indexUltimoCountri
@@ -41,30 +41,24 @@ export default function Home() {
   // };
 
   setTimeout(() => {
-// setIsLoading(true);
+    // setIsLoading(true);
 
-setIsLoading(false);
-}, 3000);
-
+    setIsLoading(false);
+  }, 3000);
 
   useEffect(() => {
-dispatch(getCountry());
-
+    dispatch(getCountry());
   }, [dispatch]);
 
-useEffect(() => {
+  useEffect(() => {
     dispatch(getActivity());
   }, [dispatch]);
-  
-  
-  
-  
 
   function handleSort(e) {
     e.preventDefault();
     dispatch(filterCountryByAfabeticamente(e.target.value));
     setPagina(1);
-    serOrden(`Ordenado ${e.target.value}`);
+    setOrden(`Ordenado ${e.target.value}`);
   }
 
   function handlefilterContinents(e) {
@@ -84,7 +78,7 @@ useEffect(() => {
     e.preventDefault();
     dispatch(filterCountryByPopulation(e.target.value));
     setPagina(1);
-    serOrden(`Ordenado ${e.target.value}`);
+    setOrden(`Ordenado ${e.target.value}`);
   }
 
   const norepeat = allActivity
@@ -96,19 +90,19 @@ useEffect(() => {
       return acc;
     }, []);
 
-    if (isLoading) {
-      return (
-        <div>
-          <Spinner />
-        </div>
-      );
-    }
+  if (isLoading) {
+    return (
+      <div>
+        <Spinner />
+      </div>
+    );
+  }
   return (
     <div className={styles.container}>
       <header className={styles.header}>
         <div className={styles.title}>
           <NavLink to="/home">
-            <h1 className={styles.titulo}>Countries</h1>
+            <h2 className={styles.titulo}>Countries</h2>
           </NavLink>
         </div>
         <div className={styles.search}>
@@ -121,14 +115,12 @@ useEffect(() => {
         </div>
       </header>
       <div>
-        {/* <div className={styles.containerFilter}> */}
         <div className={styles.navBar}>
-          <select className={styles.selection} onChange={(e) => handleSort(e)}>
-            <optgroup label="Orden ALfabetico">
-              <option value="all">Orden ALfabetico</option>
+          <select className={styles.selection} label="sortAlphabetically" onChange={(e) => handleSort(e)}>
+              <option value="ALL">Orden ALfabetico</option>
               <option value="ascendente">A-Z</option>
               <option value="descendente">Z-A</option>
-            </optgroup>
+          
           </select>
           <select
             className={styles.selection}
@@ -159,17 +151,17 @@ useEffect(() => {
           </select>
           <select
             className={styles.selection}
-            label="Population"
+            label="SortPopulation"
             onClick={(e) => handleSortPopulation(e)}
           >
             <option value="All">Population</option>
             <option value="ascendente">Ascendente</option>
             <option value="descendente">Descendente</option>
           </select>
-          {/* </select> */}
+
           <button className={styles.filterButton}>Filter</button>
         </div>
-        {/* </div> */}
+
         <div className={styles.paginado}>
           <Paginado
             countriPorPagina={countriPorPagina}
@@ -189,17 +181,15 @@ useEffect(() => {
           {currentCountry?.map((e) => {
             return (
               <div key={e.id}>
-                <ul>
-                  <CountryCard
-                    name={
-                      <Link className={styles.link} to={"/home/" + e.id}>
-                        {e.name}
-                      </Link>
-                    }
-                    flags={e.flags}
-                    continents={e.continents}
-                  />
-                </ul>
+                <a className={styles.link} href={"/home/" + e.id}>
+                  <ul>
+                    <CountryCard
+                      name={e.name}
+                      flags={e.flags}
+                      continents={e.continents}
+                    />
+                  </ul>
+                </a>
               </div>
             );
           })}

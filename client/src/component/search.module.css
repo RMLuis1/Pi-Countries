@@ -12,6 +12,8 @@
     border-radius: 4px;
     display: flex;
     align-items: center;
+        transition: 1.5s;
+            font-family: 'Josefin Sans', sans-serif;
 }
 
 .searchBox :is(input, button){
@@ -41,3 +43,11 @@ transition: width .5s;
 ::placeholder{
     color: inherit;
 }
+
+.searchBox:hover {
+    color: black;
+}
+
+
+
+

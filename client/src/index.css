@@ -2,15 +2,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-html {
+/* html {
   margin: 0;
   height: 100%;
-}
+} */
 
 body {
   margin: 0;
-  height: 100%;
-  overflow: hidden;
+  height: auto;
+  width: auto;
+  /* overflow: scroll; */
+  overflow-x: hidden;
+  /* overflow: hidden; */
   display: flex;
   justify-content: center;
   align-items: center;

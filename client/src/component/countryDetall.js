@@ -15,20 +15,21 @@ export function Country() {
   const countryDetall = useSelector((state) => state.country);
   console.log(countryDetall);
   return (
-    <div>
+    <div className={styles.container}> 
       <Link to="/home">
         <button className={styles.buttonVolver}>Go back</button>
       </Link>
+      <div className={styles.mastil}><div className={styles.puntomastil}></div><div className={styles.base}></div></div>
       <div className={styles.div1}>
         {countryDetall ? (
           <div className={styles.div2}>
-            <h1 className={styles.title}>{countryDetall.name}</h1>
+            <h2 className={styles.title}>{countryDetall.name}</h2>
             <img
-              width={150}
-              height={100}
-              src={countryDetall.flags}
+              className={styles.flags}
+              src={countryDetall.flags} 
               alt="flag not found"
             />
+            <div className={styles.contenido}>
             <p>
               <strong>Id: </strong>
               {countryDetall.id}
@@ -57,8 +58,8 @@ export function Country() {
               {" "}
               <strong>Languages: </strong> {countryDetall.languages}{" "}
             </p>
-
-            <div>
+              </div>
+            <div className={styles.activity}>
               <strong>Activity: </strong>
               <br />
               {countryDetall.activities?.map((e) => {
@@ -75,6 +76,7 @@ export function Country() {
                 );
               })}
             </div>
+            
           </div>
         ) : (
           "No found"
