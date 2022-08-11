@@ -44,6 +44,10 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
         allowNull: true,
       },
+      maps:{
+        type:DataTypes.TEXT,
+        allowNull:false,
+      }
       
     },
     { timestamp: false }

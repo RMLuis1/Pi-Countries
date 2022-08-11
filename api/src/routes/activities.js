@@ -11,7 +11,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 router.post("/", async (req, res) => {
-  const { name, difficulty, duration, season, country } = req.body;
+  const { name, difficulty, duration, season, country,imagen } = req.body;
 
   try {
     const activity = await Activity.create({
@@ -19,6 +19,7 @@ router.post("/", async (req, res) => {
       difficulty: difficulty,
       duration: duration,
       season: season,
+      imagen:imagen,
     });
 
     const ActivityCountry = await Country.findAll({

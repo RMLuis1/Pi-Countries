@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const axios = require("axios");
+// const axios = require("axios");
 const { Country, Activity, tablaInt } = require("../db");
 const { Op, where } = require("sequelize");
 const { allCountries } = require("../controllers/countries");
@@ -11,7 +11,9 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 router.get("/", async (req, res) => {
+
   const countriesTotal = await allCountries();
+
   return res.status(200).send(countriesTotal);
 });
 

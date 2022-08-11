@@ -30,6 +30,10 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM("spring", "fall", "summer", "winter"),
         allowNull: false,
       },
+      imagen:{
+        type: DataTypes.TEXT,
+        allowNull: false,
+      }
     },
     { timestamp: false }
   );
