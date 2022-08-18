@@ -11,16 +11,12 @@ export const FILTER_POPULATION = "FILTER_POPULATION";
 export const FILTER_ACTIVITY = "FILTER_ACTIVITY";
 export const ADD_COUTRYBYACTIVITY = "ADD_COUTRYBYACTIVITY";
 
-
-
-
 export const getCountry = () => {
   return (dispatch) => {
-     axios.get(`http://localhost:3001/countries`).then((result) => {
+    axios.get(`http://localhost:3001/countries`).then((result) => {
       return dispatch({
         type: GET_ALL_COUNTRY,
         payload: result.data,
-        
       });
     });
   };
@@ -38,31 +34,62 @@ export function getCountriesID(id) {
   };
 }
 
-
-
 export const getActivity = () => {
-  return (dispatch) => {
-    axios.get("http://localhost:3001/activity").then((result) => {
+  try {
+    return async function (dispatch) {
+      const result = await axios.get("http://localhost:3001/activity");
       return dispatch({
         type: GET_ALL_ACTIVITY,
         payload: result.data,
       });
-    });
-  };
+    };
+    // eslint-disable-next-line no-unreachable
+  } catch (error) {
+    console.log(error);
+    return alert("not found");
+  }
+  // return (dispatch) => {
+  //   axios.get("http://localhost:3001/activity").then((result) => {
+  //     return dispatch({
+  //       type: GET_ALL_ACTIVITY,
+  //       payload: result.data,
+  //     });
+  //   });
+  // };
 };
 export function addActivity(activity) {
-  return async function (dispatch) {
-    return await axios
-      .post("http://localhost:3001/activity" , activity)
-      .then((result) => {
-        dispatch({
-          type: ADD_ACTIVITY,
-          payload: result.data,
-        });
+  try {
+    return async function (dispatch) {
+      const result = await axios.post("http://localhost:3001/activity", activity
+      // name: activity.name,
+        // difficulty: activity.difficulty,
+        // duration: activity.duration,
+        // season: activity.season,
+        // imagen: activity.imagen,
+        // country: activity.country,      }
+      );
+      console.log("Esto es result", result);
+      return dispatch({
+        type: ADD_ACTIVITY,
+        payload: result.data,
       });
-  };
+    };
+    // eslint-disable-next-line no-unreachable
+  } catch (error) {
+    console.log(error);
+    return alert("no se puede mandar nada");
+  }
+  // return async function (dispatch) {
+  //   return await axios
+  //     .post("http://localhost:3001/activity", activity)
+  //     .then((result) => {
+  //       dispatch({
+  //         type: ADD_ACTIVITY,
+  //         payload: result.data,
+  //       });
+  //     });
+  // };
 }
-
 
 export function filterCountryByAfabeticamente(payload) {
   return {
@@ -82,24 +109,23 @@ export function filterCountryByPopulation(payload) {
     payload,
   };
 }
-export function filterActivity(payload){
-  return{
-    type:"FILTER_ACTIVITY",
-    payload
-  }
-}
-
-export function AddCountryByActivity(payload){
+export function filterActivity(payload) {
   return {
-    type: "ADD_COUTRYBYACTIVITY",
-    payload
+    type: "FILTER_ACTIVITY",
+    payload,
   };
 }
 
-export function getSearch(payload){
+export function AddCountryByActivity(payload) {
   return {
-    type: GET_ALL_COUNTRIESNAME,
-    payload
-  }
+    type: "ADD_COUTRYBYACTIVITY",
+    payload,
+  };
 }
 
+export function getSearch(payload) {
+  return {
+    type: GET_ALL_COUNTRIESNAME,
+    payload,
+  };
+}

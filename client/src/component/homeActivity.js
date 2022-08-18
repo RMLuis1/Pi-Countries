@@ -33,7 +33,7 @@ export function HomeActivity() {
             <ul key={e.id}>
               <div className={styles.activitis}>
                 <h2 className={styles.h1A}>{e.name}</h2>
-                <img alt="Not Found">{e.imagen}</img>
+                <img width={130} height={100} src={e.imagen} alt="no Found"/>
                 <h4 className={styles.h41}>
                   <strong>Difficulty: </strong> {e.difficulty}
                 </h4>

@@ -4,11 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addActivity, getCountry } from "../redux/accion";
 import styles from "./addActivity.module.css";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 export function CreateActivity() {
   const dispatch = useDispatch();
-  // const activities = useSelector((state) => state.activity);
   const allCountry = useSelector((state) => state.countries);
 
   const [input, setInput] = useState({
@@ -16,10 +15,53 @@ export function CreateActivity() {
     difficulty: "",
     duration: "",
     season: "",
+    image: "",
     country: [],
   });
 
   const [inputError, setInputError] = useState({});
+
+  //----------------------- add photo -----------------------------------------
+
+  function Imagenes(e) {
+    const fileInput = e.target.files[0];
+
+    console.log("esto es fileiput", fileInput);
+
+    const reader = new FileReader();
+    let arr = async () => {
+      return await reader.readAsText(fileInput);
+    };
+    console.log("esto es arr", arr);
+
+    reader.onload = async (e) => {
+      console.log("Esto seria onload", e.target.result);
+      //       const  newState = [...input.image];
+      //       newState.push(e.target.result);
+      // console.log("seria newState", newState);
+      // return newState
+      // }
+      setInput({
+        ...input,
+        // image: newState,
+        image: e.target.result,
+      });
+    };
+
+    console.log("render", reader.readAsDataURL(fileInput));
+  }
+
+  console.log("Esto es image input", input);
+
+  function deleteImagen(e) {
+    console.log("Esto seria el deleted", e);
+    if (e) {
+      setInput({
+        ...input,
+        image: "",
+      });
+    }
+  }
 
   //!    SEASON
   function handleSelectSeason(e) {
@@ -70,6 +112,15 @@ export function CreateActivity() {
       });
     } else {
       dispatch(addActivity(input));
+      setInput({
+        ...input,
+        name: "",
+        season: "",
+        difficulty: "",
+        duration: "",
+        image: "",
+        country: [],
+      });
       Swal.fire({
         title: "Success!",
         text: "Activity successfully created!",
@@ -77,22 +128,11 @@ export function CreateActivity() {
         background: ("#797678", "#c2a3a3"),
         confirmButtonColor: ("#808080", " 	#C0C0C0"),
       });
-      setInput({
-        ...input,
-        name: "",
-        season: "",
-        difficulty: "",
-        duration: "",
-        country: [],
-      });
     }
   }
   useEffect(() => {
     dispatch(getCountry());
   }, [dispatch]);
-  useEffect(() => {
-    dispatch(addActivity(input));
-  }, [input,dispatch]);
 
   function validate(input) {
     let error = {};
@@ -153,6 +193,48 @@ export function CreateActivity() {
               <p className={styles.danger}>{inputError.name}</p>
             )}
           </div>{" "}
+          <div>
+            <div>
+              <div>
+                <div>
+                  <label>Fotos </label>
+                  <label>
+                    <input type="file" onChange={(e) => Imagenes(e)} />
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div>
+              {!input.image.length ? (
+                <img
+                  src="https://img.freepik.com/vector-gratis/fitness-gym-siluetas-levantamiento-pesas_565520-424.jpg"
+                  alt="No Found"
+                  width={100}
+                  key="1"
+                />
+              ) : (
+                <div>
+                  <img
+                    src={input.image}
+                    alt="No Found"
+                    style={{
+                      borderRadius: ".6rem",
+                      width: "40%",
+                      height: "90%",
+                    }}
+                  />
+
+                  <button
+                    className={styles.btnQuitarFoto}
+                    type="button"
+                    onClick={() => deleteImagen(input.image)}
+                  >
+                    X
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
           <div>
             <label>Difficulty</label>
             <input
