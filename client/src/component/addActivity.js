@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { addActivity, getCountry } from "../redux/accion";
 import styles from "./addActivity.module.css";
 import Swal from "sweetalert2";
+import { MdOutlineAddPhotoAlternate } from "react-icons/md";
 
 export function CreateActivity() {
   const dispatch = useDispatch();
@@ -196,32 +197,37 @@ export function CreateActivity() {
           <div>
             <div>
               <div>
-                <div>
-                  <label>Fotos </label>
-                  <label>
-                    <input type="file" onChange={(e) => Imagenes(e)} />
+                <div className={styles.archivo}>
+                  <label className={styles.label1}>Foto</label>
+                  <label className={styles.label}>
+                   
+                    <MdOutlineAddPhotoAlternate fontSize={30} />
+                    <input
+                      type="file"
+                      className={styles.inputImagen}
+                      // data-multiple-capture="Foto Ilustrativa"
+                      onChange={(e) => Imagenes(e)}
+                    />{" "}
                   </label>
                 </div>
               </div>
             </div>
             <div>
               {!input.image.length ? (
-                <img
-                  src="https://img.freepik.com/vector-gratis/fitness-gym-siluetas-levantamiento-pesas_565520-424.jpg"
-                  alt="No Found"
-                  width={100}
-                  key="1"
-                />
+                // <img
+                //   src="https://img.freepik.com/vector-gratis/fitness-gym-siluetas-levantamiento-pesas_565520-424.jpg"
+                //   alt="No Found"
+                //   width={50}
+
+                //   key="1"
+                // />
+               null
               ) : (
                 <div>
                   <img
                     src={input.image}
                     alt="No Found"
-                    style={{
-                      borderRadius: ".6rem",
-                      width: "40%",
-                      height: "90%",
-                    }}
+                   className={styles.imge}
                   />
 
                   <button

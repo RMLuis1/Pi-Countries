@@ -92,11 +92,58 @@ background: linear-gradient(to bottom right, #797678, #c2a3a3);
     background: transparent;
     transition: all .25s ease;
 }
-
-
 .input:focus {
     outline: none;
     border-bottom: 1px solid #141414;
+}
+
+.label1{
+    /* text-align: center;
+        background: #282828;
+        border-radius: 6px; */
+        position: relative;
+        /* margin-left:20px */
+        margin: 0px 20px 0px 0px;
+}
+.inputImagen{
+   display: none;
+}
+
+.label{
+    border-bottom: 1px solid #ffffff;  
+    display: inline-block;
+    padding: 6px 12px;
+    width: 5%;
+    cursor: pointer;
+}
+.btnQuitarFoto{
+position: relative;
+    border-radius: 30px;
+    /* border-bottom-right-radius: 0; */
+    border-top-left-radius: 0;
+    background: linear-gradient(to bottom right, #797678, #c2a3a3);
+    color: white;
+    padding: 7px 13px;
+    /* display: inline-block; */
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    /* right: -10px; */
+    left: 22%;
+    top:-97px;
+    /* bottom: 30px; */
+    cursor: pointer;
+    transition: all .25s ease;
+    box-shadow: -5px 6px 20px 0px rgba(51, 51, 51, 0.4);
+}
+.imge {
+    position: relative;
+    left: 22%;
+    top:-30%;
+     border-radius: 30px;
+    border-top-right-radius: 0;
+    width: 150px;
+    height: auto;
 }
 
 .submit {
