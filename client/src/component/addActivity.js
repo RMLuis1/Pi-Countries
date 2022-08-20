@@ -17,7 +17,7 @@ export function CreateActivity() {
     duration: "",
     season: "",
     image: "",
-    country: [],
+    countrys: [],
   });
 
   const [inputError, setInputError] = useState({});
@@ -83,7 +83,7 @@ export function CreateActivity() {
   function handleCountry(e) {
     setInput({
       ...input,
-      country: [...input.country, e.target.value],
+      countrys: [...input.countrys, e.target.value],
     });
   }
   //!va manejando los cambios del input(los guarda)
@@ -120,7 +120,7 @@ export function CreateActivity() {
         difficulty: "",
         duration: "",
         image: "",
-        country: [],
+        countrys: [],
       });
       Swal.fire({
         title: "Success!",
@@ -170,7 +170,7 @@ export function CreateActivity() {
 
   return (
     <div className={styles.divM}>
-      <Link to="/home">
+      <Link to="/activity">
         <button className={styles.volver}>Go back</button>
       </Link>
       <br />
@@ -212,16 +212,9 @@ export function CreateActivity() {
                 </div>
               </div>
             </div>
-            <div>
+            <div className={styles.divImg}>
               {!input.image.length ? (
-                // <img
-                //   src="https://img.freepik.com/vector-gratis/fitness-gym-siluetas-levantamiento-pesas_565520-424.jpg"
-                //   alt="No Found"
-                //   width={50}
-
-                //   key="1"
-                // />
-               null
+                null
               ) : (
                 <div>
                   <img
@@ -312,7 +305,7 @@ export function CreateActivity() {
             </select>
             <ul>
               <li className={styles.input}>
-                {input.country.map((e) => e + " ,")}{" "}
+                {input.countrys.map((e) => e + " ,")}{" "}
               </li>{" "}
             </ul>
           </div>

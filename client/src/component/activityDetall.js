@@ -10,11 +10,17 @@ export function ActivityDetall() {
   const dispatch = useDispatch();
   // const allCountry = useSelector((state) => state.countries);
   const { id } = useParams();
-  const act = id;
+  let aa= id
+  console.log("esto a aa",aa)
+  console.log("esto a id",id)
   const activities = useSelector((state) => state.activity);
+console.log(activities)
+
+
   useEffect(() => {
     dispatch(getActivity());
   }, [dispatch]);
+
   // useEffect(() => {
   //   dispatch(getCountry());
   // }, [dispatch]);
@@ -45,8 +51,12 @@ export function ActivityDetall() {
   //     dispatch(AddCountryByActivity(e));
   //     alert("Activity successfully created!");
   //   }
-  // }
+  // } 
 
+
+
+const fil=activities.filter((e)=> e.id === id)
+console.log("esto es fil",fil)
   return (
     <div>
       <NavLink to="/activity">
@@ -55,7 +65,7 @@ export function ActivityDetall() {
       <br />
       <div className={styles.divMayor}>
         {activities?.map((e) =>
-          e.id === act ? (
+          e.id === Number(id) ? (
             <div>
               <ActivityCard
                 name={e.name}

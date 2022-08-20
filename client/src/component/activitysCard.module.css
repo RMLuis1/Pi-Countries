@@ -1,6 +1,6 @@
 .activitysCard {
       font-size: 13px; 
-        height: 230px;
+        height: auto;
         text-align: center;
         border-radius: 1rem;
         background: linear-gradient(to bottom right, #79767815, #c2a3a3a1, rgba(145, 145, 145, 0.295), rgba(243, 243, 243, 0.247));

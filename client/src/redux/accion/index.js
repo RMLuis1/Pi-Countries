@@ -48,26 +48,13 @@ export const getActivity = () => {
     console.log(error);
     return alert("not found");
   }
-  // return (dispatch) => {
-  //   axios.get("http://localhost:3001/activity").then((result) => {
-  //     return dispatch({
-  //       type: GET_ALL_ACTIVITY,
-  //       payload: result.data,
-  //     });
-  //   });
-  // };
+ 
 };
 export function addActivity(activity) {
   try {
     return async function (dispatch) {
       const result = await axios.post("http://localhost:3001/activity", activity
-      // name: activity.name,
-        // difficulty: activity.difficulty,
-        // duration: activity.duration,
-        // season: activity.season,
-        // imagen: activity.imagen,
-        // country: activity.country,      }
-      );
+       );
       console.log("Esto es result", result);
       return dispatch({
         type: ADD_ACTIVITY,
@@ -79,16 +66,7 @@ export function addActivity(activity) {
     console.log(error);
     return alert("no se puede mandar nada");
   }
-  // return async function (dispatch) {
-  //   return await axios
-  //     .post("http://localhost:3001/activity", activity)
-  //     .then((result) => {
-  //       dispatch({
-  //         type: ADD_ACTIVITY,
-  //         payload: result.data,
-  //       });
-  //     });
-  // };
+
 }
 
 export function filterCountryByAfabeticamente(payload) {

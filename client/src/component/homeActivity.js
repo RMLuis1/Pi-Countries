@@ -15,7 +15,7 @@ export function HomeActivity() {
    dispach(getActivity());
     
   }, [dispach]);
-
+console.log(allActivity)
   return (
     <div className={styles.container}>
        <NavLink className={styles.link} to="/activity/create">
@@ -26,7 +26,7 @@ export function HomeActivity() {
       </NavLink>
       <br />
       <title className={styles.title}>Activity</title>
-
+ 
       <div className={styles.activityscard}>
         {allActivity?.map((e) => {
           return (
@@ -39,7 +39,9 @@ export function HomeActivity() {
                 </h4>
                 <h4 className={styles.h41}>
                   <strong>Paises: </strong>
-                  {e.countries.length}{" "}
+                  {e.countries.map(e=>
+                    <p>{e.name}</p>
+                  )}{" "}
                 </h4>
                 <Link to={"/activity/" + e.id}>
                   <button className={styles.buttonDe}>Detall</button>
