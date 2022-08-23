@@ -108,7 +108,7 @@ export function CreateActivity() {
     if (!input.name || !input.duration || !input.difficulty || !input.season) {
       return Swal.fire({
         title: "Error!",
-        text: "Todos los campos son obligatorios",
+        text: "All fields are required",
         icon: "error",
         background: ("#797678", "#c2a3a3"),
         confirmButtonColor: ("#808080", " 	#C0C0C0"),
@@ -162,12 +162,12 @@ export function CreateActivity() {
   ];
 
   const duracion = [
-    { duractio: "1 hora" },
-    { duractio: "2 hora" },
-    { duractio: "3 hora" },
+    { duractio: "1 hour" },
+    { duractio: "2 hour" },
+    { duractio: "3 hour" },
 
-    { duractio: "4 hora" },
-    { duractio: "Tiempo indeterminado" },
+    { duractio: "4 hour" },
+    { duractio: "Undetermined time" },
   ];
 
   return (
@@ -200,7 +200,7 @@ export function CreateActivity() {
             <div>
               <div>
                 <div className={styles.archivo}>
-                  <label className={styles.label1}>Foto</label>
+                  <label className={styles.label1}>Picture</label>
                   <label className={styles.label}>
                     <MdOutlineAddPhotoAlternate fontSize={30} />
                     <input
@@ -278,11 +278,7 @@ export function CreateActivity() {
             >
               {estaciones.map((e) => {
                 return (
-                  <option
-                    key={e}
-                    onClick={(e) => handleChange(e)}
-                    value={e}
-                  >
+                  <option key={e} onClick={(e) => handleChange(e)} value={e}>
                     {e}
                   </option>
                 );

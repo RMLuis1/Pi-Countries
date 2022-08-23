@@ -117,11 +117,14 @@ console.log("Es currenci",currentCountry)
       </header>
       <div>
         <div className={styles.navBar}>
-          <select className={styles.selection} label="sortAlphabetically" onChange={(e) => handleSort(e)}>
-              <option value="ALL">Orden ALfabetico</option>
-              <option value="ascendente">A-Z</option>
-              <option value="descendente">Z-A</option>
-          
+          <select
+            className={styles.selection}
+            label="sortAlphabetically"
+            onChange={(e) => handleSort(e)}
+          >
+            <option value="ALL">Order alphabetically</option>
+            <option value="ascendente">A-Z</option>
+            <option value="descendente">Z-A</option>
           </select>
           <select
             className={styles.selection}
@@ -156,8 +159,8 @@ console.log("Es currenci",currentCountry)
             onClick={(e) => handleSortPopulation(e)}
           >
             <option value="All">Population</option>
-            <option value="ascendente">Ascendente</option>
-            <option value="descendente">Descendente</option>
+            <option value="ascendente">Upward</option>
+            <option value="descendente">Falling</option>
           </select>
 
           <button className={styles.filterButton}>Filter</button>
@@ -179,22 +182,26 @@ console.log("Es currenci",currentCountry)
         </div>
 
         <div className={styles.countriescard}>
-          {currentCountry? currentCountry.map((e) => {
-            return (
-              <div key={e.id}>
-                <a className={styles.link}  href={"/home/" + e.id}>
-                  <ul>
-                    <CountryCard
-                      name={e.name}
-                      flags={e.flags}
-                      continents={e.continents}
-                      id={e.id}
-                    />
-                  </ul>
-                </a>
-              </div>
-            );
-          }) : <div> </div> }
+          {currentCountry ? (
+            currentCountry.map((e) => {
+              return (
+                <div key={e.id}>
+                  <a className={styles.link} href={"/home/" + e.id}>
+                    <ul>
+                      <CountryCard
+                        name={e.name}
+                        flags={e.flags}
+                        continents={e.continents}
+                        id={e.id}
+                      />
+                    </ul>
+                  </a>
+                </div>
+              );
+            })
+          ) : (
+            <div> </div>
+          )}
         </div>
       </div>
     </div>
