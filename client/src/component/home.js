@@ -27,7 +27,7 @@ export default function Home() {
 
   console.log(orden);
   const [pagina, setPagina] = useState(1);
-  const [countriPorPagina] = useState(8);
+  const [countriPorPagina] = useState(9);
 
   const indexUltimoCountri = pagina * countriPorPagina;
   const indexPrimerCountri = indexUltimoCountri - countriPorPagina;
@@ -39,7 +39,7 @@ export default function Home() {
   // const paginado = (pageNumber) => {
   //   setPagina(pageNumber);
   // };
-
+console.log("Es currenci",currentCountry)
   setTimeout(() => {
     // setIsLoading(true);
 
@@ -90,7 +90,8 @@ export default function Home() {
       return acc;
     }, []);
 
-  if (isLoading) {
+  // if (isLoading) {
+  if (currentCountry.length === 0) {
     return (
       <div>
         <Spinner />
@@ -178,21 +179,22 @@ export default function Home() {
         </div>
 
         <div className={styles.countriescard}>
-          {currentCountry?.map((e) => {
+          {currentCountry? currentCountry.map((e) => {
             return (
               <div key={e.id}>
-                <a className={styles.link} href={"/home/" + e.id}>
+                <a className={styles.link}  href={"/home/" + e.id}>
                   <ul>
                     <CountryCard
                       name={e.name}
                       flags={e.flags}
                       continents={e.continents}
+                      id={e.id}
                     />
                   </ul>
                 </a>
               </div>
             );
-          })}
+          }) : <div> </div> }
         </div>
       </div>
     </div>

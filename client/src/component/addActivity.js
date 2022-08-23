@@ -22,6 +22,8 @@ export function CreateActivity() {
 
   const [inputError, setInputError] = useState({});
 
+  //Country order alphabetically
+  const sortCountry = allCountry.sort((a, b) => a.name.localeCompare(b.name));
   //----------------------- add photo -----------------------------------------
 
   function Imagenes(e) {
@@ -153,10 +155,10 @@ export function CreateActivity() {
   }
 
   const estaciones = [
-    { name: "summer" },
-    { name: "fall" },
-    { name: "winter" },
-    { name: "spring" },
+     "summer" ,
+     "fall" ,
+     "winter" ,
+     "spring" ,
   ];
 
   const duracion = [
@@ -200,7 +202,6 @@ export function CreateActivity() {
                 <div className={styles.archivo}>
                   <label className={styles.label1}>Foto</label>
                   <label className={styles.label}>
-                   
                     <MdOutlineAddPhotoAlternate fontSize={30} />
                     <input
                       type="file"
@@ -213,14 +214,12 @@ export function CreateActivity() {
               </div>
             </div>
             <div className={styles.divImg}>
-              {!input.image.length ? (
-                null
-              ) : (
+              {!input.image.length ? null : (
                 <div>
                   <img
                     src={input.image}
                     alt="No Found"
-                   className={styles.imge}
+                    className={styles.imge}
                   />
 
                   <button
@@ -280,11 +279,11 @@ export function CreateActivity() {
               {estaciones.map((e) => {
                 return (
                   <option
-                    key={e.name}
+                    key={e}
                     onClick={(e) => handleChange(e)}
-                    value={e.name}
+                    value={e}
                   >
-                    {e.name}
+                    {e}
                   </option>
                 );
               })}
@@ -294,7 +293,7 @@ export function CreateActivity() {
             <label>Country</label>
 
             <select className={styles.input} onChange={(e) => handleCountry(e)}>
-              {allCountry?.map((e) => {
+              {sortCountry?.map((e) => {
                 return (
                   <option value={e.name} key={e.id} multiple="multiple">
                     {" "}

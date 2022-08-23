@@ -45,8 +45,24 @@ router.get("/", async (req, res) => {
   res.send(activity);
 });
 
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+console.log("Esto seria ID get",id)
+  try {
+   if (id) {
+      const activityId = await Activity.findByPk( id, { include: [Country]}
+     
+      );
+           res.status(200).json(activityId);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
+  console.log("esto es id back: ", id);
   try {
     await Activity.destroy({
       where: {

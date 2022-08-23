@@ -8,6 +8,7 @@ import {
   FILTER_POPULATION,
   ADD_ACTIVITY,
   FILTER_ACTIVITY,
+  GET_ALL_ACTIVITY_ID,
   ADD_COUTRYBYACTIVITY,
 } from "../accion";
 
@@ -16,6 +17,7 @@ const initialState = {
   countries2: [],
   country: [],
   activity: [],
+  activit:[]
 };
 
 export default function Reducer(state = initialState, action) {
@@ -51,6 +53,12 @@ export default function Reducer(state = initialState, action) {
         ...state,
         activity: action.payload,
       };
+    case GET_ALL_ACTIVITY_ID:
+      return{
+        ...state,
+        activit: action.payload
+      }
+
     case ADD_ACTIVITY:
       return {
         ...state,
@@ -63,9 +71,12 @@ export default function Reducer(state = initialState, action) {
 
     case FILTER_ACTIVITY:
       const filterActivities = state.countries2;
+      
       const activit =
         action.payload === "All"
-          ? filterActivities.filter((e) => e.activities.length > 0)
+          ?
+          filterActivities
+          
           : filterActivities.filter((e) => {
               return e.activities
                 .map((e) => (e.name ? e.name : e))

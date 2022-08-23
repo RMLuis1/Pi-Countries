@@ -24,9 +24,9 @@
       height:45%; 
       width: 200px; 
      font-size: 20px; 
-    background: linear-gradient(to bottom right, #797678, #c2a3a3);
-        border-radius: 5px; 
-     cursor: pointer; 
+background: linear-gradient(to bottom right, #797678, #c2a3a3);
+border-radius: 30px;
+    border-top-left-radius: 0;     cursor: pointer; 
      transition: 1.5s; 
      margin-right: 3%; 
     color: white; 
@@ -50,18 +50,6 @@ margin: 18px 10px ;
 .titulo:hover{
 color:black;
 }
-
- .search{
-
-padding: 10px 20px;
-position:absolute;
-font-size: 20px;
-font-weight: bold;
-margin: 10px;
-margin-left: 18%;
-top:2%;
-} 
-
 .activity{
 padding: 20px 20px;
 font-size: 20px;
@@ -70,21 +58,36 @@ margin-right: 0;
 float: right;
 font-family: 'Josefin Sans', sans-serif;
 
+
 } 
+ .search{
+
+padding: 10px 20px;
+position:absolute;
+font-size: 20px;
+font-weight: bold;
+margin: 10px;
+margin-left: 22%;
+} 
+
+
 
 .navBar{
     position: absolute;
     top: 3%;
-    left:24%;
-    padding: 10px 10px;
+    left:18%;
+    padding: 12px 10px;
+    border-radius: 30px;
+        border-top-left-radius: 0;
     color: white;
     background: linear-gradient(to bottom right, #797678, #c2a3a3);
     border-radius: 4px;
     display: flex;
     align-items: center;
     transition: 1.5s;
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: bold;
+    /* font-family: 'Josefin Sans', sans-serif; */
+    /* font-weight: bold; */
+    font-size: 20px;
 }
 .navBar :is(select, button) {
     color: inherit;
@@ -135,8 +138,9 @@ font-family: 'Josefin Sans', sans-serif;
     object-fit: cover;
     bottom: 0%;
 }
-.link{
+link:link , link:visited, link:active{
     text-decoration: none;
+    /* color:white; */
     /* color:linear-gradient(to bottom right, #500135, #c50d0dfd, rgb(255, 255, 255), rgba(0, 0, 0, 0.993));
     font-size: 25px; */
 }

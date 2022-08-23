@@ -5,6 +5,7 @@ const { Country, Activity, tablaInt } = require("../db");
 const allCountries = async () => {
   try {
     const currentUrl = await axios.get("https://restcountries.com/v3.1/all");
+    console.log(currentUrl)
     const db = await Country.findAll({ include: [Activity] });
     if (db.length === 0) {
       console.log("ENTRO AQUI?");

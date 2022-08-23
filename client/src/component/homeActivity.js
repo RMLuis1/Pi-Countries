@@ -2,20 +2,24 @@ import React from "react";
 import { useEffect} from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { getActivity} from "../redux/accion";
+import {  getActivity} from "../redux/accion";
 import { Link, NavLink } from "react-router-dom";
 import styles from "./homeActivity.module.css";
+// import Swal from "sweetalert2";
 
 export function HomeActivity() {
-  const dispach = useDispatch();
+  const dispatch = useDispatch();
   const allActivity = useSelector((state) => state.activity);
-
+  // const navigate = useNavigate();
+  
   useEffect(() => {
   
-   dispach(getActivity());
+   dispatch(getActivity());
     
-  }, [dispach]);
+  }, [dispatch]);
 console.log(allActivity)
+
+
   return (
     <div className={styles.container}>
        <NavLink className={styles.link} to="/activity/create">
@@ -39,9 +43,7 @@ console.log(allActivity)
                 </h4>
                 <h4 className={styles.h41}>
                   <strong>Paises: </strong>
-                  {e.countries.map(e=>
-                    <p>{e.name}</p>
-                  )}{" "}
+                  {e.countries.length}{" "}
                 </h4>
                 <Link to={"/activity/" + e.id}>
                   <button className={styles.buttonDe}>Detall</button>

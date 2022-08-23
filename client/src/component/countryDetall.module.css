@@ -9,7 +9,9 @@
         height: auto;
         font-size: 20px;
         background: linear-gradient(to bottom right, #797678, #c2a3a3);
-        border-radius: 5px;
+    border-radius: 30px;
+        border-top-left-radius: 0;
+        cursor: pointer;
         cursor: pointer;
         transition: 1.5s;
         position: absolute;
@@ -298,8 +300,9 @@
         }
     .contenido{
         position: absolute;
-        right: 33%;
+        right: 38%;
         font-size: 20px;
+        
     }
     .link {
             display: inline-block;

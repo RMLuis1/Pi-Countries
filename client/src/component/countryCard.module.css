@@ -32,6 +32,18 @@ opacity: 0.3;
 .countriesCard:hover::before{
     transform: scale(1);
 }
+.countriesCard h3{
+    position: absolute;
+    bottom: 5%;
+    left: 30%;
+    color:white;
+    font-size:18px;
+    -webkit-text-stroke: 0.5px black;
+}
+.countriesCard:hover h3 {
+    display: none;
+    transition: all 800ms linear;
+}
 span{
     position: relative;
     color: #fff;
@@ -97,7 +109,7 @@ span{
 
 
 .image {
-    width: 80%;
+    width: 90%;
     height:200px;
     object-fit: cover;
         border-radius: 1rem;

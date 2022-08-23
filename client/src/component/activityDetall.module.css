@@ -1,11 +1,29 @@
- .countries{
+.container{
+    height: 80px;
+        position: fixed;
+        width: 100%;
+        top: 10px;
+        left: 0;
+}
+ 
+
+.div1 {
+     position: relative;
+    margin: 5%;
+    width: 90%;
+    height: auto;
+
+}
+.divCountri{
+    max-width: 200px;
+}
+.countries{
      list-style: none;
-    width: 5px;
-    margin: 50px ; 
-     
-     float: left;
-     display:flexbox ;
-     text-align: center;
+     width:20px;
+    margin: 20px 15px 0px; 
+    position:static;
+    float: left;
+    
      
 } 
 .ul{
@@ -14,49 +32,59 @@
 
 
 .li{
-    /* flex-direction: column; */
     list-style: none;
-    /* position: flex; */
     justify-content: space-evenly;
+font-size: 18px;
+      
+}
+.link{
+text-decoration: none;
+}
+.countries{
+position: relative;
+margin: 0 auto;
+margin-left: 30px;
+left: -30%;
 }
 
+
+
 .buttonVolver {
-    height: auto;
-    width: 300px;
-    font-size: 18px;
-    background-color: transparent;
-    color: rgba(90, 72, 248, 0);
-    line-height: 26px;
-    border-radius: 28px;
-    border-color: #32c3d6;
+    height: 45%;
+    width: 200px;
+    font-size: 20px;
+    background: linear-gradient(to bottom right, #797678, #c2a3a3);
+   
+    border-radius: 30px;
+    
+        border-top-left-radius: 0;
     cursor: pointer;
-    transition: width 0.2s;
-    float: left;
+    transition: 1.5s;
     margin-right: 3%;
-    color: rgb(6, 6, 61);
+    color: white;
 }
 
 .buttonVolver:hover {
-    width: 320px;
-    background-color: #3cb9cf;
+    color: black;
 }
-
-
-.fondodeportada {
-    height: 225%;
-
-    width: 100%;
-    /* max-width: max-content; */
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -100;
-}
-
-.divMayor{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 160vh;
+.buttonDelete {
+    height: 45%;
+    width: 200px;
+    font-size: 20px;
+    background: linear-gradient(to bottom right, #797678, #c2a3a3);
    
+    border-radius: 30px;
+    
+        border-top-left-radius: 0;
+    cursor: pointer;
+    transition: 1.5s;
+    margin-right: 3%;
+    color: white;
+
 }
+
+.buttonDelete:hover {
+    color: black;
+}
+
+

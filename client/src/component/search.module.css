@@ -4,14 +4,14 @@
 } */
 
 .searchBox {
-    position: relative;
+    /* position: relative; */
 
     padding: 10px;
     color:#eee;
     background: linear-gradient(to bottom right, #797678, #c2a3a3);
     border-radius: 4px;
-    display: flex;
-    align-items: center;
+    /* display: flex; */
+    /* align-items: center; */
         transition: 1.5s;
             font-family: 'Josefin Sans', sans-serif;
 }
