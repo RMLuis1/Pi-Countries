@@ -22,27 +22,27 @@ console.log(allActivity)
 
   return (
     <div className={styles.container}>
-       <NavLink className={styles.link} to="/activity/create">
+      <NavLink className={styles.link} to="/activity/create">
         <button className={styles.buttonCreate}>Create Activity</button>
       </NavLink>
       <NavLink to="/home">
-        <button className={styles.buttonVolver}>Volver</button>{" "}
+        <button className={styles.buttonVolver}>Go back</button>{" "}
       </NavLink>
       <br />
       <title className={styles.title}>Activity</title>
- 
+
       <div className={styles.activityscard}>
         {allActivity?.map((e) => {
           return (
             <ul key={e.id}>
               <div className={styles.activitis}>
                 <h2 className={styles.h1A}>{e.name}</h2>
-                <img width={130} height={100} src={e.imagen} alt="no Found"/>
+                <img width={130} height={100} src={e.imagen} alt="no Found" />
                 <h4 className={styles.h41}>
                   <strong>Difficulty: </strong> {e.difficulty}
                 </h4>
                 <h4 className={styles.h41}>
-                  <strong>Paises: </strong>
+                  <strong>Countries: </strong>
                   {e.countries.length}{" "}
                 </h4>
                 <Link to={"/activity/" + e.id}>

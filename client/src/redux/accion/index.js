@@ -16,7 +16,7 @@ export const GET_ALL_ACTIVITY_ID = "GET_ALL_ACTIVITY_ID";
 export const getCountry = () => {
   try {
     return async function (dispatch) {
-      const result = await axios.get(`http://localhost:3001/countries`);
+      const result = await axios.get(`/countries`);
       return dispatch({
         type: GET_ALL_COUNTRY,
         payload: result.data,
@@ -30,7 +30,7 @@ export const getCountry = () => {
 export function getCountriesID(id) {
   try {
     return async function (dispatch) {
-      const result = await axios.get(`http://localhost:3001/countries/${id}`);
+      const result = await axios.get(`/countries/${id}`);
       return dispatch({
         type: GET_ALL_COUNTRIESID,
         payload: result.data,
@@ -45,7 +45,7 @@ export function getCountriesID(id) {
 export const getActivity = () => {
   try {
     return async function (dispatch) {
-      const result = await axios.get("http://localhost:3001/activity");
+      const result = await axios.get("/activity");
       return dispatch({
         type: GET_ALL_ACTIVITY,
         payload: result.data,
@@ -61,7 +61,7 @@ export function addActivity(activity) {
   try {
     return async function (dispatch) {
       const result = await axios.post(
-        "http://localhost:3001/activity",
+        "/activity",
         activity
       );
       console.log("Esto es result", result);
@@ -73,14 +73,13 @@ export function addActivity(activity) {
     // eslint-disable-next-line no-unreachable
   } catch (error) {
     console.log(error);
-    return alert("no se puede mandar nada");
   }
 }
 
 export function getActivityID(id) {
   return async function (dispatch) {
     return await axios
-      .get(`http://localhost:3001/activity/${id}`)
+      .get(`/activity/${id}`)
       .then((result) => {
         return dispatch({
           type: GET_ALL_ACTIVITY_ID,
@@ -93,7 +92,7 @@ export function activityDelet(id) {
   try {
     console.log("Esto es action id ", id);
     return async function (dispatch) {
-      const result = await axios.delete(`http://localhost:3001/activity/${id}`);
+      const result = await axios.delete(`/activity/${id}`);
       return dispatch({
         type: ACTIVITY_DELETED,
         payload: result.data,
