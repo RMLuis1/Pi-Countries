@@ -5,11 +5,11 @@
     top: 25%;
     width: 100%;
     height: auto;
-border-radius: 30px;
-
+    
+    border-radius: 30px;
     border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-        background: linear-gradient(to bottom right, #79767815, #c2a3a3a1, rgba(145, 145, 145, 0.295), rgba(243, 243, 243, 0.247));      
+    border-bottom-left-radius: 0;
+    background: linear-gradient(to bottom right, #79767815, #c2a3a3a1, rgba(145, 145, 145, 0.295), rgba(243, 243, 243, 0.247));      
     }
 
 .name{

@@ -154,7 +154,7 @@ link:link , link:visited, link:active{
     }
 .navBar {
     position: absolute;
-    top: 2%;
+    top:3%;
     left: 27%;
     padding: 10px ;
     color: white;
@@ -207,7 +207,7 @@ link:link , link:visited, link:active{
 }
 .navBar {
     position: absolute;
-    top: 4.5%;
+    top: 7.5%;
     left: 2%;
     padding: 10px 10px;
     color: white;
@@ -286,7 +286,7 @@ grid-template-columns: 100%;
 
     .navBar {
         position: absolute;
-        top: 4.7%;
+        top: 7.5%;
         left: 2%;
         padding: 10px 10px;
         color: white;
